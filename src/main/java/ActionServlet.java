@@ -1,4 +1,6 @@
 
+import action.Action;
+import action.AuthentifierClientAction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Client;
 import metier.service.Service;
+import serialisation.ClientSerialisation;
+import serialisation.Serialisation;
 
 @WebServlet(urlPatterns = {"/ActionServlet"})
 public class ActionServlet extends HttpServlet {
@@ -33,35 +37,40 @@ public class ActionServlet extends HttpServlet {
             Service service = new Service();
 
             String todo = request.getParameter("todo");
+            Action action = null;
+            Serialisation serialisation = null;
             JsonObject jsonContainer = new JsonObject();
 
             switch (todo) {
                 case "connecter":
+                    action = new AuthentifierClientAction();
+                    serialisation = new ClientSerialisation();
+                    break;
+                case "se-connecter":
                     Client client = service.authentifierClient(request.getParameter("login"), request.getParameter("password"));
 
                     if (client != null) {
-                        jsonContainer.addProperty("connexion", true);
+                        jsonContainer.addProperty("erreur", false);
                         JsonObject jsonClient = new JsonObject();
-                        Long id = client.getId();
-                        String nom = client.getNom();
-                        String prenom = client.getPrenom();
-                        String email = client.getEmail();
-                        jsonClient.addProperty("id", id);
-                        jsonClient.addProperty("nom", nom);
-                        jsonClient.addProperty("prenom", prenom);
-                        jsonClient.addProperty("email", email);
-                        jsonContainer.add("client", jsonClient);
+                        jsonClient.addProperty("id", client.getId());
+                        jsonClient.addProperty("nom", client.getNom());
+                        jsonClient.addProperty("prenom", client.getPrenom());
+                        jsonClient.addProperty("email", client.getEmail());
                     } else {
-                        jsonContainer.addProperty("connexion", false);
+                        jsonContainer.addProperty("erreur", true);
 
                     }
                     break;
                 default:
                     break;
             }
-            Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-            gson.toJson(jsonContainer, out);
-            out.close();
+
+            if (action != null && serialisation != null) {
+                action.executer(request);
+                serialisation.serialiser(request, response);
+            } else {
+                response.sendError(400, "Bad Request (pas d'Action ou de Serialisation pour traiter cette requete)");
+            }
 
         }
     }
