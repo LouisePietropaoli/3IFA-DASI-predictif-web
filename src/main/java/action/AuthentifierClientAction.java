@@ -8,8 +8,8 @@ public class AuthentifierClientAction extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
+        String login = request.getParameter("email");
+        String password = request.getParameter("motDePasse");
 
         Service service = new Service();
         Client client = service.authentifierClient(login, password);

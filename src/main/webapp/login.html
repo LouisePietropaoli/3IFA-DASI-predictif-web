@@ -18,12 +18,12 @@
         <h2>Connexion client</h2>
         <table class="formulaire-connexion">
             <tr>
-                <th><label for="champ-login">Identifiant</label></th>
-                <td><input type="text" id="champ-login" size="20" /></td>
+                <th><label for="champ-email">Identifiant</label></th>
+                <td><input type="text" id="champ-email" size="20" /></td>
             </tr>
             <tr>
-                <th><label for="champ-password">Mot de passe</label></th>
-                <td><input type="password" id="champ-password" /></td>
+                <th><label for="champ-mot-de-passe">Mot de passe</label></th>
+                <td><input type="password" id="champ-mot-de-passe" /></td>
             </tr>
             <tr>
                 <td colspan="2" class="centrer">
@@ -42,8 +42,8 @@
                         type: 'POST',            // Méthode
                         data: {                  // Paramètres
                             todo: 'connecter',
-                            login: $('#champ-login').val(), // Récupérer la valeur du champ
-                            password: $('#champ-password').val() // idem
+                            email: $('#champ-email').val(), // Récupérer la valeur du champ
+                            motDePasse: $('#champ-mot-de-passe').val() // idem
                         },
                         dataType: 'json'        // Type de retour attendu
                     })
