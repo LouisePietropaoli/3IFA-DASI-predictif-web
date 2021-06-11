@@ -36,7 +36,7 @@ public class ActionServlet extends HttpServlet {
             JsonObject jsonContainer = new JsonObject();
 
             switch (todo) {
-                case "se-connecter":
+                case "connecter":
                     Client client = service.authentifierClient(request.getParameter("login"), request.getParameter("password"));
 
                     if (client != null) {
