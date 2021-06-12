@@ -1,7 +1,13 @@
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const mode = urlParams.get('mode');
+    console.log(mode);
     $('#connexion-titre').html(mode === 'client' ? 'Connexion' : 'Connexion employé');
+    if (!mode) {
+        $("#lien-portail-interne").hide();
+    } else {
+        $("#lien-portail-client").hide();
+    }
 
     $('#bouton-connexion').on('click', function () {
         $.ajax({
