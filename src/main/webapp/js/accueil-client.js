@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     $('#bouton-deconnexion').on('click', function () {
         $.ajax({
@@ -10,12 +8,14 @@ $(document).ready(function () {
             },
             dataType: 'json'
         })
-                .done(function (response) {
-                    window.location = `../index.html`;
+                .done(function () {
+                    setTimeout(function () {
+                        window.location = `../index.html`;
+                    },
+                            2500);
                 }
                 )
-                .fail(function (error) { // Appel KO => erreur technique à gérer
-                    $('#ligne-message').html('ERREUR: ' + error.status + ' - ' + error.statusText);
+                .fail(function () { // Appel KO => erreur technique à gérer
                 })
                 .always(function () { // facultatif: appelé après le .done() ou le .fail()
                 });

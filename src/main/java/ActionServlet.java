@@ -2,21 +2,15 @@
 import action.Action;
 import action.AuthentifierAction;
 import action.AuthentifierClientAction;
-import action.DeconnexionAction;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import dao.JpaUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import metier.data.Client;
 import serialisation.ClientSerialisation;
 import serialisation.ConnexionSerialisation;
 import serialisation.Serialisation;
@@ -36,31 +30,31 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
 
         String todo = request.getParameter("todo");
+        if (todo == null) {
+            todo = new String();
+        }
         Action action = null;
         Serialisation serialisation = null;
 
-        if ("connecter".equals(todo)) {
+        if (todo.equals("connecter")) {
             action = new AuthentifierAction();
             serialisation = new ConnexionSerialisation();
-        } else if ("deconnecter".equals(todo)) {
-            action = new DeconnexionAction();
-            action.executer(request);
-            PrintWriter out = response.getWriter();
-                        JsonObject jsonContainer = new JsonObject();
-                         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
-            gson.toJson(jsonContainer, out);
-            out.close();
-
         } else {
             // Verification de la session
-           // Long sessionUserId = (Long)session.getAttribute("sessionUserId");
-            //if (sessionUserId == null) {
-            if(false){
+            Long sessionUserId = (Long) session.getAttribute("userSessionId");
+            if (sessionUserId == null) {
                 response.sendError(403, "Accès interdit : Aucun utilisateur authentifié.");
+            } else if (todo.equals("deconnecter")) {
+                // action = new DeconnexionAction();
+                //action.executer(request);
+               session.invalidate();
+                PrintWriter out = response.getWriter();
+                out.println("{}");
+                out.close();
             } else {
                 switch (todo) {
                     case "details-client": {
@@ -76,11 +70,13 @@ public class ActionServlet extends HttpServlet {
             }
         }
 
-        if (action != null && serialisation != null) {
-            action.executer(request);
-            serialisation.serialiser(request, response);
-        } else {
-            response.sendError(400, "Bad Request (pas d'Action ou de Serialisation pour traiter cette requete)");
+        if (!(todo.equals("deconnecter"))) {
+            if (action != null && serialisation != null) {
+                action.executer(request);
+                serialisation.serialiser(request, response);
+            } else {
+                response.sendError(400, "Bad Request (pas d'Action ou de Serialisation pour traiter cette requete)");
+            }
         }
     }
 
