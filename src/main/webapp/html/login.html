@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Predict'IF - Connexion</title>
+        <link rel="shortcut icon" href="./images/IF-ico-round.png"> <!-- icône de la page ("favicon") -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- Librairie Javascript: jQuery (v3.4.1) -->
+        <script src="../js/login.js"></script>
+        <style> /* Feuille de Style CSS (dans la page) */
+            h1 { text-align: center; color: darkviolet; border-bottom: 2px dashed darkviolet; }
+            h2 { text-align: center; font-variant: small-caps; }
+            table.formulaire-connexion { margin: 10px auto; padding: 10px; border-radius: 10px; border: 2px solid violet; }
+            button.joli-bouton { padding: 3px 10px; border-radius: 5px; border-width: 3px; cursor: pointer; }
+            .centrer { text-align: center; }
+        </style>
+    </head>
+    <body>
+        <h1>Bienvenue sur Predict'IF</h1>
+        <h2 id="connexion-titre"></h2>
+        <table class="formulaire-connexion">
+            <tr>
+                <th><label for="champ-email">Identifiant</label></th>
+                <td><input type="text" id="champ-email" size="20" /></td>
+            </tr>
+            <tr>
+                <th><label for="champ-mot-de-passe">Mot de passe</label></th>
+                <td><input type="password" id="champ-mot-de-passe" /></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="centrer">
+                    <button id="bouton-connexion" class="joli-bouton">Se connecter</button>
+                </td>
+            </tr>
+            <tr>
+                <td id="ligne-message" colspan="2" class="centrer"></td> 
+            </tr>
+        </table>
+    </body>
+</html>
