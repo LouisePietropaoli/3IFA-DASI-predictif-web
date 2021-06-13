@@ -23,7 +23,6 @@ $(document).ready(function () {
 });
 
 function afficherListeMediums() {
-    console.log("response");
     $.ajax({
         url: './ActionServlet',
         type: 'POST',
