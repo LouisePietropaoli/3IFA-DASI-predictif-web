@@ -158,17 +158,6 @@ public class ActionServlet extends HttpServlet {
                     }
                     break;
                     /**
-                     * utilisé pour l'initalisation de la page de fiche client
-                     * (vue par un employé) renvoie toutes les infos du client
-                     * (dont profil astral) sauf son mot de passe L'historique
-                     * client n'est pas renvoyé
-                     */
-                    case "recuperer-fiche-client": {
-                        action = new RecupererDetailsProfilClientAvecProfilAstralAction();
-                        serialisation = new DetailsProfilClientAvecProfilAstralSeralisation();
-                    }
-                    break;
-                    /**
                      * utilisé pour afficher l'historique des consultations d'un
                      * du client relié à l'employé authentifié renvoie
                      * l'historique des consultations du client sans les dispo
