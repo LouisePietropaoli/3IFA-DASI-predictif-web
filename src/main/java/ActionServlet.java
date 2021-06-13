@@ -1,7 +1,6 @@
 
 import action.Action;
 import action.AuthentifierAction;
-import action.AuthentifierClientAction;
 import action.CommencerConsultationAction;
 import action.CreerCompteClientAction;
 import action.DemanderPredictionsAction;
@@ -54,20 +53,27 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
         HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
-
+        request.getParameter("test");
         String todo = request.getParameter("todo");
-        if (todo == null) {
-            todo = new String();
-        }
+
         Action action = null;
         Serialisation serialisation = null;
 
-        if (todo.equals("connecter")) {
+        /**
+         * utilisé pour la page d'accueil sans connexion et la liste des mediums
+         * quand l'employé est connecté renvoie la liste des mediums avec leur
+         * description simple (genre, designation, type,description + id)
+         */
+        if (todo.equals("lister-mediums")) {
+            action = new ListerMediumsAction();
+            serialisation = new ListeMediumsSerialisation();
+
+        } else if (todo.equals("connecter")) {
             action = new AuthentifierAction();
-            serialisation = new ConnexionSerialisation();
+            serialisation = new RetourSuccesErreurSerialisation();
+
         } else {
             // Verification de la session
             Long sessionUserId = (Long) session.getAttribute("userSessionId");
@@ -82,19 +88,6 @@ public class ActionServlet extends HttpServlet {
                 out.close();
             } else {
                 switch (todo) {
-
-                    /**
-                     * utilisé pour la page d'accueil sans connexion et la liste
-                     * des mediums quand l'employé est connecté renvoie la liste
-                     * des mediums avec leur description simple (genre,
-                     * designation, type,description + id)
-                     */
-                    case "lister-mediums": {
-                        action = new ListerMediumsAction();
-                        serialisation = new ListeMediumsSerialisation();
-                    }
-                    break;
-
                     /**
                      * utilisé pour l'initalisation de la page d'accueil client
                      * authentifié renvoie la liste de médiums avec dispo et le
@@ -109,8 +102,8 @@ public class ActionServlet extends HttpServlet {
                     /**
                      * utilisé pour la création d'un compte client pour ensuite
                      * afficher la modale si la création a eu lieu ou signifier
-                     * une erreur sinon 
-                     * renvoie un attribut d'erreur à vrai si la création a eu lieu
+                     * une erreur sinon renvoie un attribut d'erreur à vrai si
+                     * la création a eu lieu
                      */
                     case "creer-compte-client": {
                         action = new CreerCompteClientAction();
@@ -121,7 +114,7 @@ public class ActionServlet extends HttpServlet {
                     /**
                      * utilisé pour afficher les détails d'un médiums et sa
                      * disponbilité dans les modales renvoie le medium avec sa
-                     * description détaillée 
+                     * description détaillée
                      */
                     case "recuperer-details-medium": {
                         action = new RecupererDetailsMediumAction();
@@ -133,8 +126,8 @@ public class ActionServlet extends HttpServlet {
                      * utilisé pour réserver un médium sur la page de listing
                      * des mediums avec dispo et pour afficher la modale de
                      * confirmation ou d'erreur de création de la consultation
-                     * renvoie un attribut erreur à vrai si la consutlation n'a pas
-                     * été créée
+                     * renvoie un attribut erreur à vrai si la consutlation n'a
+                     * pas été créée
                      */
                     case "reserver-medium": {
                         action = new ReserverMediumAction();

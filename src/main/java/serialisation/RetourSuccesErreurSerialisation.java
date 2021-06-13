@@ -14,7 +14,9 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
 
-        container.addProperty("erreur", (boolean) request.getAttribute("erreur"));
+        Boolean erreur = (Boolean)request.getAttribute("erreur");
+        container.addProperty("erreur", erreur == null ? false : erreur);
+        container.addProperty("todo", true);
 
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();

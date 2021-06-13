@@ -18,10 +18,9 @@ public class AuthentifierClientAction extends Action {
         Client client = service.authentifierClient(email, motDePasse);
 
         if (client != null) {
-            request.setAttribute("connexion", true);
             session.setAttribute("userSessionId", client.getId());
         } else {
-            request.setAttribute("connexion", false);
+            request.setAttribute("erreur", true);
         }
     }
 

@@ -1,11 +1,12 @@
 $(document).ready(function () {
-    //afficherListeMediums();
+    afficherListeMediums();
     $('.icone-loupe').on('click', function () {
         $.ajax({
             url: './ActionServlet',
             type: 'POST',
             data: {
-                todo: 'connecter'            },
+                todo: ''
+            },
             dataType: 'json'
         })
                 .done(function (response) {
@@ -15,7 +16,6 @@ $(document).ready(function () {
                     }
                 })
                 .fail(function (error) {
-                    $('#ligne-message').html('ERREUR: ' + error.status + ' - ' + error.statusText);
                 })
                 .always(function () {
                 });
@@ -23,7 +23,7 @@ $(document).ready(function () {
 });
 
 function afficherListeMediums() {
-                        console.log("response");
+    console.log("response");
     $.ajax({
         url: './ActionServlet',
         type: 'POST',

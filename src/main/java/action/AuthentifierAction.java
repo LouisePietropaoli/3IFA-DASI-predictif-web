@@ -21,18 +21,16 @@ public class AuthentifierAction extends Action {
             client = service.authentifierClient(email, motDePasse);
             if (client != null) {
                 session.setAttribute("userSessionId", client.getId());
-                request.setAttribute("connexion", true);
             } else {
-                request.setAttribute("connexion", false);
+                request.setAttribute("erreur", true);
             }
         } else {
             Employe employe;
             employe = service.authentifierEmploye(email, motDePasse);
             if (employe != null) {
                 session.setAttribute("userSessionId", employe.getId());
-                request.setAttribute("connexion", true);
             } else {
-                request.setAttribute("connexion", false);
+                request.setAttribute("erreur", true);
             }
         }
     }
