@@ -7,6 +7,7 @@ import action.DemanderPredictionsAction;
 import action.InitialiserAccueilClientAction;
 import action.InitialiserAccueilEmployeAction;
 import action.ListerMediumsAction;
+import action.RecupererClassementMedium;
 import action.RecupererDetailsMediumAction;
 import action.RecupererDetailsProfilClientAction;
 import action.RecupererDetailsProfilClientAvecProfilAstralAction;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import serialisation.ClassementMediumSerialisation;
 import serialisation.ConnexionSerialisation;
 import serialisation.DetailsProfilClientAvecProfilAstralSeralisation;
 import serialisation.DetailsProfilClientSeralisation;
@@ -226,6 +228,17 @@ public class ActionServlet extends HttpServlet {
                     case "recuperer-statistiques": {
                         action = new RecupererStatistiquesEmployeAction();
                         serialisation = new StatistiquesEmployeSerialisation();
+                    }
+                    break;
+                    /**
+                     * utilisé pour l'initalisation de la page des statistiques
+                     * d'un employé authentifié renvoie le nombre de
+                     * consultations, le nombre de clients et le pourcentage de
+                     * la clientèle totale de l'employé
+                     */
+                    case "recuperer-classement-medium": {
+                        action = new RecupererClassementMedium();
+                        serialisation = new ClassementMediumSerialisation();
                     }
                     break;
                     default:
