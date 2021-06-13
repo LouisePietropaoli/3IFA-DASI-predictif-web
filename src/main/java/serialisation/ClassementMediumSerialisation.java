@@ -30,9 +30,12 @@ public class ClassementMediumSerialisation extends Serialisation {
                 jsonMedium.addProperty("id", medium.getId());
                 jsonMedium.addProperty("name", medium.getDesignation());
                 jsonMedium.addProperty("nbConsultations", medium.getNbConsultations());
+                //TODO : get class
                 jsonListeMedium.add(jsonMedium);
             }
             container.add("classementMediums", jsonListeMedium);
+        }else{
+             container.addProperty("erreur", true);
         }
         
         PrintWriter out = this.getWriter(response);

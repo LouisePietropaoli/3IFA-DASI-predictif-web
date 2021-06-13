@@ -12,7 +12,6 @@ import action.RecupererDetailsMediumAction;
 import action.RecupererDetailsProfilClientAction;
 import action.RecupererDetailsProfilClientAvecProfilAstralAction;
 import action.RecupererHistoriqueConsultationsClientAction;
-import action.RecupererHistoriqueConsultationsClientAvecDispoAction;
 import action.RecupererStatistiquesEmployeAction;
 import action.ReserverMediumAction;
 import action.TerminerConsultationAction;
