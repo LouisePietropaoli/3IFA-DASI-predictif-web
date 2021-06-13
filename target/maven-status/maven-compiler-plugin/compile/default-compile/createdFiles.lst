@@ -1,8 +1,6 @@
-ActionServlet.class
-serialisation/ConnexionSerialisation.class
-action/Action.class
-action/DeconnexionAction.class
 serialisation/Serialisation.class
-serialisation/ClientSerialisation.class
-action/AuthentifierAction.class
-action/AuthentifierClientAction.class
+serialisation/InitialisationAccueilClientSerialisation.class
+action/ListerMediumsAction.class
+action/InitialisationAccueilClientAction.class
+action/Action.class
+action/DeconnecterAction.class

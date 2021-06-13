@@ -2,6 +2,20 @@
 import action.Action;
 import action.AuthentifierAction;
 import action.AuthentifierClientAction;
+import action.CommencerConsultationAction;
+import action.CreerCompteClientAction;
+import action.DemanderPredictionsAction;
+import action.InitialiserAccueilClientAction;
+import action.InitialiserAccueilEmployeAction;
+import action.ListerMediumsAction;
+import action.RecupererDetailsMediumAction;
+import action.RecupererDetailsProfilClientAction;
+import action.RecupererDetailsProfilClientAvecProfilAstralAction;
+import action.RecupererHistoriqueConsultationsClientAction;
+import action.RecupererHistoriqueConsultationsClientAvecDispoAction;
+import action.RecupererStatistiquesEmployeAction;
+import action.ReserverMediumAction;
+import action.TerminerConsultationAction;
 import dao.JpaUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +27,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import serialisation.ClientSerialisation;
 import serialisation.ConnexionSerialisation;
+import serialisation.DetailsProfilClientAvecProfilAstralSeralisation;
+import serialisation.DetailsProfilClientSeralisation;
+import serialisation.DetailsProfilMediumSeralisation;
+import serialisation.HistoriqueConsultationsClientAvecDispoSerialisation;
+import serialisation.HistoriqueConsultationsClientSerialisation;
+import serialisation.InitialisationAccueilClientSerialisation;
+import serialisation.InitialisationAccueilEmployeSerialisation;
+import serialisation.ListeMediumsSerialisation;
+import serialisation.ListePredictionsSerialisation;
+import serialisation.RetourSuccesErreurSerialisation;
 import serialisation.Serialisation;
+import serialisation.StatistiquesEmployeSerialisation;
 
 @WebServlet(urlPatterns = {"/ActionServlet"})
 public class ActionServlet extends HttpServlet {
@@ -65,8 +90,8 @@ public class ActionServlet extends HttpServlet {
                      * designation, type,description + id)
                      */
                     case "lister-mediums": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new ListerMediumsAction();
+                        serialisation = new ListeMediumsSerialisation();
                     }
                     break;
 
@@ -76,31 +101,31 @@ public class ActionServlet extends HttpServlet {
                      * profil astral du client authentifié
                      */
                     case "initialser-accueil-client": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new InitialiserAccueilClientAction();
+                        serialisation = new InitialisationAccueilClientSerialisation();
                     }
                     break;
 
                     /**
                      * utilisé pour la création d'un compte client pour ensuite
                      * afficher la modale si la création a eu lieu ou signifier
-                     * une erreur sinon renvoie vrai si la création a eu lieu
+                     * une erreur sinon 
+                     * renvoie un attribut d'erreur à vrai si la création a eu lieu
                      */
                     case "creer-compte-client": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new CreerCompteClientAction();
+                        serialisation = new RetourSuccesErreurSerialisation();
                     }
                     break;
 
                     /**
                      * utilisé pour afficher les détails d'un médiums et sa
                      * disponbilité dans les modales renvoie le medium avec sa
-                     * description détaillée et le profil astral du client
-                     * authentifié
+                     * description détaillée 
                      */
                     case "recuperer-details-medium": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererDetailsMediumAction();
+                        serialisation = new DetailsProfilMediumSeralisation();
                     }
                     break;
 
@@ -108,11 +133,12 @@ public class ActionServlet extends HttpServlet {
                      * utilisé pour réserver un médium sur la page de listing
                      * des mediums avec dispo et pour afficher la modale de
                      * confirmation ou d'erreur de création de la consultation
-                     * renvoie vrai si la consutlation a été créée, faux sinon
+                     * renvoie un attribut erreur à vrai si la consutlation n'a pas
+                     * été créée
                      */
                     case "reserver-medium": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new ReserverMediumAction();
+                        serialisation = new RetourSuccesErreurSerialisation();
                     }
                     break;
 
@@ -122,8 +148,8 @@ public class ActionServlet extends HttpServlet {
                      * authentifié avec ses détails (sans ses consultations)
                      */
                     case "recuperer-details-profil-client": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererDetailsProfilClientAction();
+                        serialisation = new DetailsProfilClientSeralisation();
                     }
                     break;
 
@@ -134,8 +160,8 @@ public class ActionServlet extends HttpServlet {
                      * consultation passée
                      */
                     case "recuperer-historique-consultations-client-avec-dispo": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererHistoriqueConsultationsClientAvecDispoAction();
+                        serialisation = new HistoriqueConsultationsClientAvecDispoSerialisation();
                     }
                     break;
                     /**
@@ -145,8 +171,8 @@ public class ActionServlet extends HttpServlet {
                      * client n'est pas renvoyé
                      */
                     case "recuperer-fiche-client": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererDetailsProfilClientAvecProfilAstralAction();
+                        serialisation = new DetailsProfilClientAvecProfilAstralSeralisation();
                     }
                     break;
                     /**
@@ -156,8 +182,8 @@ public class ActionServlet extends HttpServlet {
                      * des médiums associés
                      */
                     case "recuperer-historique-consultations-fiche-client": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererHistoriqueConsultationsClientAction();
+                        serialisation = new HistoriqueConsultationsClientSerialisation();
                     }
                     break;
 
@@ -170,8 +196,8 @@ public class ActionServlet extends HttpServlet {
                      * pas renvoyé
                      */
                     case "initialser-accueil-employe": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new InitialiserAccueilEmployeAction();
+                        serialisation = new InitialisationAccueilEmployeSerialisation();
                     }
                     break;
 
@@ -180,8 +206,8 @@ public class ActionServlet extends HttpServlet {
                      * Renvoie les trois prédictions (amour, santé, travail)
                      */
                     case "demander-predictions": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new DemanderPredictionsAction();
+                        serialisation = new ListePredictionsSerialisation();
                     }
                     break;
 
@@ -192,8 +218,8 @@ public class ActionServlet extends HttpServlet {
                      * démarrée, faux sinon
                      */
                     case "commencer-consultation": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new CommencerConsultationAction();
+                        serialisation = new RetourSuccesErreurSerialisation();
                     }
                     break;
 
@@ -204,8 +230,8 @@ public class ActionServlet extends HttpServlet {
                      * la consultation a bien été terminée, faux sinon
                      */
                     case "terminer-consultation": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new TerminerConsultationAction();
+                        serialisation = new RetourSuccesErreurSerialisation();
                     }
                     break;
 
@@ -216,8 +242,8 @@ public class ActionServlet extends HttpServlet {
                      * la clientèle totale de l'employé
                      */
                     case "recuperer-statistiques": {
-                        action = new AuthentifierClientAction();
-                        serialisation = new ClientSerialisation();
+                        action = new RecupererStatistiquesEmployeAction();
+                        serialisation = new StatistiquesEmployeSerialisation();
                     }
                     break;
                     default:
