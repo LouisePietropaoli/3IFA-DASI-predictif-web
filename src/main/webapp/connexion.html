@@ -1,11 +1,12 @@
+<!--page de connexion client/employé-->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Predict'IF - Connexion</title>
+        <title>Connexion</title>
         <link rel="shortcut icon" href="./images/IF-ico-round.png"> <!-- icône de la page ("favicon") -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- Librairie Javascript: jQuery (v3.4.1) -->
-        <script src="../js/login.js"></script>
+        <script src="js/connexion.js"></script>
         <style> /* Feuille de Style CSS (dans la page) */
             h1 { text-align: center; color: darkviolet; border-bottom: 2px dashed darkviolet; }
             h2 { text-align: center; font-variant: small-caps; }
@@ -15,8 +16,7 @@
         </style>
     </head>
     <body>
-        <h1>Bienvenue sur Predict'IF</h1>
-        <h2 id="connexion-titre"></h2>
+        <h1 id="connexion-titre"></h1>
         <table class="formulaire-connexion">
             <tr>
                 <th><label for="champ-email">Identifiant</label></th>
@@ -35,11 +35,18 @@
                 <td id="ligne-message" colspan="2" class="centrer"></td> 
             </tr>
         </table>
-        <div id="lien-portail-interne">
-            <a href="login.html">Portail interne</a>
+        <div>
+            <button>
+                <a href="creation-compte.html">
+                    Créer un compte
+                </a>
+            </button>
         </div>
-         <div id="lien-portail-client">
-            <a href="login.html?mode=client">Portail client</a>
+        <div id="lien-portail-interne">
+            <a href="connexion.html">Portail interne</a>
+        </div>
+        <div id="lien-portail-client">
+            <a href="connexion.html?mode=client">Portail client</a>
         </div>
     </body>
 </html>

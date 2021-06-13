@@ -17,6 +17,7 @@ public class ListeMediumsSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
+            container.addProperty("erreur", true);
 
         //TODO
         PrintWriter out = this.getWriter(response);

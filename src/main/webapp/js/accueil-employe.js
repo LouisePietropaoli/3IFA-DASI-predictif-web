@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#bouton-deconnexion').on('click', function () {
         $.ajax({
-            url: '../ActionServlet',
+            url: './ActionServlet',
             type: 'POST',
             data: {
                 todo: 'deconnecter'
@@ -9,10 +9,7 @@ $(document).ready(function () {
             dataType: 'json'
         })
                 .done(function () {
-                    setTimeout(function () {
-                        window.location = `../index.html`;
-                    },
-                            2500);
+                    window.location = `index.html`;
                 }
                 )
                 .fail(function () { // Appel KO => erreur technique à gérer

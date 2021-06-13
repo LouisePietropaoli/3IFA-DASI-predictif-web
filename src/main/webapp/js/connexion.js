@@ -1,6 +1,7 @@
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const mode = urlParams.get('mode');
+    console.log(mode);
     $('#connexion-titre').html(mode === 'client' ? 'Connexion' : 'Connexion employé');
     if (!mode) {
         $("#lien-portail-interne").hide();
@@ -10,7 +11,7 @@ $(document).ready(function () {
 
     $('#bouton-connexion').on('click', function () {
         $.ajax({
-            url: '../ActionServlet',
+            url: './ActionServlet',
             type: 'POST',
             data: {
                 todo: 'connecter',

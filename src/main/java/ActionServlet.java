@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import serialisation.ClientSerialisation;
 import serialisation.ConnexionSerialisation;
 import serialisation.DetailsProfilClientAvecProfilAstralSeralisation;
 import serialisation.DetailsProfilClientSeralisation;
@@ -55,6 +54,7 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo");
         HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
 
