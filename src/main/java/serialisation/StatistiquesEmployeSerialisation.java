@@ -19,7 +19,17 @@ public class StatistiquesEmployeSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
 
-        //TODO
+         Long nbClientEmploye = (Long) request.getAttribute("nbClientEmploye");
+         double pourcentageClientEmploye = (double) request.getAttribute("pourcentageClientEmploye");
+         
+
+        if (nbClientEmploye != null) {
+            container.addProperty("nbClientEmploye", nbClientEmploye.doubleValue());
+            container.addProperty("pourcentageClientEmploye", pourcentageClientEmploye);
+        } else {
+            container.addProperty("erreur", true);
+        }
+        
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         gson.toJson(container, out);
