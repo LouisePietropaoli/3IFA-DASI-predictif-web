@@ -13,7 +13,6 @@ action/AuthentifierClientAction.class
 serialisation/ClassementMediumSerialisation.class
 action/RecupererHistoriqueConsultationsClientAction.class
 action/CommencerConsultationAction.class
-serialisation/DetailsProfilClientAvecProfilAstralSeralisation.class
 action/RecupererDetailsMediumAction.class
 action/TerminerConsultationAction.class
 serialisation/InitialisationAccueilEmployeSerialisation.class
