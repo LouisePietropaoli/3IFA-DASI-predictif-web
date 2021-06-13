@@ -5,13 +5,19 @@
  */
 package actions;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import dao.JpaUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.data.Client;
+import metier.service.Service;
+import java.io.PrintWriter;
 
 /**
  *
@@ -19,6 +25,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ActionServlet", urlPatterns = {"/ActionServlet"})
 public class ActionServlet extends HttpServlet {
+    
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        JpaUtil.init();
+    }
+
+    @Override
+    public void destroy() {
+        JpaUtil.destroy();
+        super.destroy();
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,19 +49,33 @@ public class ActionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ActionServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ActionServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String todo = request.getParameter("todo");
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        
+        Service s = new Service();
+        
+        JsonObject container = new JsonObject(); // Objet "conteneur JSON" pour structurer les données à sérialiser
+        
+        Client client = s.authentifierClient(login, password);
+        
+        if(client != null){
+            JsonObject jsonClient = new JsonObject(); // Création d'un objet JSON pour un étudiant
+            jsonClient.addProperty("id", client.getId());
+            jsonClient.addProperty("nom", client.getNom());
+            jsonClient.addProperty("prenom", client.getPrenom());
+            jsonClient.addProperty("mail", client.getEmail());
+            container.addProperty("connexion", true);
+            container.add("client", jsonClient);
+        }else{
+            container.addProperty("connexion", false);
         }
+        
+        response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+                    Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+        gson.toJson(container, out);
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
