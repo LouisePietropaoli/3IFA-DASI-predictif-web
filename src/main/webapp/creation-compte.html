@@ -4,11 +4,80 @@
     <head>
         <meta charset="UTF-8">
         <title>Création de compte</title>
-        <link rel="shortcut icon" href="./images/IF-ico-round.png"> 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="js/accueil-client.js"></script>
+        <script src="js/creation-compte.js"></script>
     </head>
     <body>
         <h1>Création de compte</h1>
+        <button><a href='./connexion.html'>Se connecter</a></button>
+        
+        <div id='identite' class='categorie'>
+            <h3>Identité</h3>
+            <table>
+                <tr>
+                    <td>Nom *</td>
+                    <td><input type='text' id='nom' name='nom' /></td>
+                </tr>
+                <tr>
+                    <td>Prénom *</td>
+                    <td><input type='text' id='prenom' name='nom' required /></td>
+                </tr>
+                <tr>
+                    <td>Date de naissance *</td>
+                    <td><input type="date" id="date_naissance" name="date_naissance" required /></td>
+                </tr>
+                <tr>
+                    <td>Adresse</td>
+                    <td><input type='text' id='adresse' name='adresse'/></td>
+                </tr>
+                <tr>
+                    <td>Ville</td>
+                    <td><input type='text' id='ville' name='ville'/></td>
+                </tr>
+                <tr>
+                    <td>Code postal</td>
+                    <td><input type='number' id='code_postal' name='code_postal' maxlength="5" pattern="[0-9]{5}" /></td>
+                </tr>
+            </table>
+        </div>
+            
+        <div id='compte' class='categorie'>
+            <h3>Compte</h3>
+            <table>
+                <tr>
+                    <td>Adresse mail *</td>
+                    <td><input type='email' id='adresse_mail' name='adresse_mail' required /></td>
+                </tr>
+                <tr>
+                    <td>Téléphone *</td>
+                    <td><input type='number' id='telephone' name='telephone' required maxlength="10" pattern="[0-9]{10}" /></td>
+                </tr>
+                <tr>
+                    <td>Mot de passe *</td>
+                    <td><input type='password' id='mdp' name='mdp' required /></td>
+                </tr>
+            </table>
+        </div>
+        
+        <button type='submit' onClick='validerFormulaire()' value="">Créer mon compte</button>
+    <div id='modal_success' style="visibility: hidden">
+        <h1>La création de votre compte a réussi. Un email de confirmation vous a été envoyé.</h1>
+        <button><a href='./connexion.html'>Se connecter</a></button>
+    </div>
+    <div id='modal_error' style="visibility: hidden">
+        <h1>La création de votre compte a échoué...</h1>
+        <button><a href='./index.html'>Retour à la page d'accueil</a></button>
+    </div>
     </body>
 </html>
+
+    
+<style>
+    input:invalid {
+        color: red;
+    }
+
+    input:valid {
+        color: black;
+    }
+</style>
