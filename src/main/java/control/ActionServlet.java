@@ -76,8 +76,8 @@ public class ActionServlet extends HttpServlet {
 
         } else {
             // Verification de la session
-            Long sessionUserId = (Long) session.getAttribute("userSessionId");
-            if (sessionUserId == null) {
+            Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
+            if (userAuthentified == null) {
                 response.sendError(403, "Accès interdit : Aucun utilisateur authentifié.");
             } else if (todo.equals("deconnecter")) {
                //  action = new DeconnexionAction();

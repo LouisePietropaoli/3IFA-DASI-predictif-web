@@ -21,6 +21,7 @@ public class AuthentifierAction extends Action {
             client = service.authentifierClient(email, motDePasse);
             if (client != null) {
                 session.setAttribute("client", client);
+                session.setAttribute("userAuthentified", true);
             } else {
                 request.setAttribute("erreur", true);
             }
@@ -29,6 +30,7 @@ public class AuthentifierAction extends Action {
             employe = service.authentifierEmploye(email, motDePasse);
             if (employe != null) {
                 session.setAttribute("employe", employe);
+                session.setAttribute("userAuthentified", true);
             } else {
                 request.setAttribute("erreur", true);
             }
