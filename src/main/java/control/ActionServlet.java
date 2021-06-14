@@ -1,6 +1,5 @@
 package control;
 
-
 import action.Action;
 import action.AuthentifierAction;
 import action.CommencerConsultationAction;
@@ -62,6 +61,11 @@ public class ActionServlet extends HttpServlet {
         Serialisation serialisation = null;
 
         /**
+         * ********************************************************************
+         * ACTIONS SANS AUTHENTIFICATION
+         *********************************************************************
+         */
+        /**
          * utilisé pour la page d'accueil sans connexion et la liste des mediums
          * quand l'employé est connecté renvoie la liste des mediums avec leur
          * description simple (genre, designation, type,description + id)
@@ -74,13 +78,25 @@ public class ActionServlet extends HttpServlet {
             action = new AuthentifierAction();
             serialisation = new RetourSuccesErreurSerialisation();
 
+        } else if (todo.equals("recuperer-details-medium")) {
+            /**
+             * utilisé pour afficher les détails d'un médiums et sa disponbilité
+             * dans les modales renvoie le medium avec sa description détaillée
+             */
+            action = new RecupererDetailsMediumAction();
+            serialisation = new DetailsProfilMediumSeralisation();
         } else {
+            /**
+             * ********************************************************************
+             * ACTIONS AVEC AUTHENTIFICATION
+         *********************************************************************
+             */
             // Verification de la session
-            Long sessionUserId = (Long) session.getAttribute("userSessionId");
-            if (sessionUserId == null) {
+            Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
+            if (userAuthentified == null) {
                 response.sendError(403, "Accès interdit : Aucun utilisateur authentifié.");
             } else if (todo.equals("deconnecter")) {
-               //  action = new DeconnexionAction();
+                //  action = new DeconnexionAction();
                 //action.executer(request);
                 session.invalidate();
                 PrintWriter out = response.getWriter();
@@ -108,17 +124,6 @@ public class ActionServlet extends HttpServlet {
                     case "creer-compte-client": {
                         action = new CreerCompteClientAction();
                         serialisation = new RetourSuccesErreurSerialisation();
-                    }
-                    break;
-
-                    /**
-                     * utilisé pour afficher les détails d'un médiums et sa
-                     * disponbilité dans les modales renvoie le medium avec sa
-                     * description détaillée
-                     */
-                    case "recuperer-details-medium": {
-                        action = new RecupererDetailsMediumAction();
-                        serialisation = new DetailsProfilMediumSeralisation();
                     }
                     break;
 
@@ -249,8 +254,6 @@ public class ActionServlet extends HttpServlet {
             if (action != null && serialisation != null) {
                 action.executer(request);
                 serialisation.serialiser(request, response);
-            } else {
-                response.sendError(400, "Bad Request (pas d'Action ou de Serialisation pour traiter cette requete)");
             }
         }
     }
