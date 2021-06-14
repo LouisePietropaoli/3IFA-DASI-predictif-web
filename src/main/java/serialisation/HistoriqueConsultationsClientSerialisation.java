@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Consultation;
 import metier.data.Medium;
+import static util.Utility.recupererTypeMedium;
 
 /**
  * construit l'historique des consultations du client
@@ -37,7 +38,7 @@ public class HistoriqueConsultationsClientSerialisation extends Serialisation {
                 jsonConsultation.addProperty("nomEmploye", consultation.getEmploye().getNom());
                 jsonConsultation.addProperty("prenomEmploye", consultation.getEmploye().getPrenom());
                 jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
-                //TODO : Get CLASS
+                jsonConsultation.addProperty("typeMedium", recupererTypeMedium(consultation.getMedium()));
                 jsonHistoriqueConsultation.add(jsonConsultation);
             }
             container.add("historiqueConsultation", jsonHistoriqueConsultation);

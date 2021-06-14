@@ -1,12 +1,12 @@
 package action;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import metier.data.Client;
 import metier.data.Consultation;
-import metier.data.Employe;
 import metier.service.Service;
 
 /**
@@ -18,14 +18,13 @@ public class RecupererHistoriqueConsultationsClientAvecDispoAction extends Actio
     @Override
     public void executer(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        Long employeId = Long.parseLong(session.getAttribute("userSessionId").toString(), 10);
+        Long clientId = Long.parseLong(session.getAttribute("userSessionId").toString(), 10);
         Service service = new Service();
-        Employe employe = service.rechercherEmployeParId(employeId);
-        Consultation consultation = service.recupererConsultationEnCours(employe);
-        List<Consultation> historiqueConsultation = service.recupererHistoriqueConsultationsClient(consultation.getClient());
-        ArrayList<Boolean> dispos =  new ArrayList<Boolean>();
+        Client client = service.rechercherClientParId(clientId);
+        List<Consultation> historiqueConsultation = service.recupererHistoriqueConsultationsClient(client);
+        Map<Long, Boolean> dispos =  new HashMap<>();
         for (Consultation consult : historiqueConsultation) {
-           dispos.add(service.getDisponibilite(consult.getMedium()));
+            dispos.put(consult.getId(), service.getDisponibilite(consult.getMedium()));
         }
         request.setAttribute("historiqueConsultation", historiqueConsultation);
         request.setAttribute("dispos", dispos);

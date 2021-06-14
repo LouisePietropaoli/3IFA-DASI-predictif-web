@@ -7,9 +7,11 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Consultation;
+import static util.Utility.recupererTypeMedium;
 
 /**
  * construit l'historique des consultations du client
@@ -24,10 +26,10 @@ public class HistoriqueConsultationsClientAvecDispoSerialisation extends Seriali
         JsonObject container = new JsonObject();
 
         List<Consultation> historiqueConsultation = (List<Consultation>) request.getAttribute("historiqueConsultation");
-         
+        Map<Long, Boolean> dispos = (Map<Long, Boolean> ) request.getAttribute("dispos");
          JsonArray jsonHistoriqueConsultation = new JsonArray();
 
-        if (historiqueConsultation != null) {
+        if (historiqueConsultation != null && dispos != null) {
              for (Consultation consultation : historiqueConsultation) {
                 JsonObject jsonConsultation = new JsonObject();
                 jsonConsultation.addProperty("id", consultation.getId());
@@ -35,8 +37,9 @@ public class HistoriqueConsultationsClientAvecDispoSerialisation extends Seriali
                 jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut().toString());
                 jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin().toString());
                 jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
-                //TODO : Get Dispo
-                //TODO : Get CLASS
+                jsonConsultation.addProperty("dispo", dispos.get(consultation.getId()));
+                jsonConsultation.addProperty("type", recupererTypeMedium(consultation.getMedium()));
+                jsonConsultation.addProperty("idMedium", consultation.getMedium().getId());
                 jsonHistoriqueConsultation.add(jsonConsultation);
             }
             container.add("historiqueConsultation", jsonHistoriqueConsultation);
