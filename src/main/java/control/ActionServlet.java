@@ -63,7 +63,7 @@ public class ActionServlet extends HttpServlet {
         /**
          * ********************************************************************
          * ACTIONS SANS AUTHENTIFICATION
-         *********************************************************************
+         * ********************************************************************
          */
         /**
          * utilisé pour la page d'accueil sans connexion et la liste des mediums
@@ -85,11 +85,20 @@ public class ActionServlet extends HttpServlet {
              */
             action = new RecupererDetailsMediumAction();
             serialisation = new DetailsProfilMediumSeralisation();
+        } else if (todo.equals("creer-compte-client")) {
+            /**
+             * utilisé pour la création d'un compte client pour ensuite afficher
+             * la modale si la création a eu lieu ou signifier une erreur sinon
+             * renvoie un attribut d'erreur à vrai si la création a eu lieu
+             */
+            action = new CreerCompteClientAction();
+            serialisation = new RetourSuccesErreurSerialisation();
+
         } else {
             /**
              * ********************************************************************
              * ACTIONS AVEC AUTHENTIFICATION
-         *********************************************************************
+             * ********************************************************************
              */
             // Verification de la session
             Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
@@ -112,18 +121,6 @@ public class ActionServlet extends HttpServlet {
                     case "initialser-accueil-client": {
                         action = new InitialiserAccueilClientAction();
                         serialisation = new InitialisationAccueilClientSerialisation();
-                    }
-                    break;
-
-                    /**
-                     * utilisé pour la création d'un compte client pour ensuite
-                     * afficher la modale si la création a eu lieu ou signifier
-                     * une erreur sinon renvoie un attribut d'erreur à vrai si
-                     * la création a eu lieu
-                     */
-                    case "creer-compte-client": {
-                        action = new CreerCompteClientAction();
-                        serialisation = new RetourSuccesErreurSerialisation();
                     }
                     break;
 
