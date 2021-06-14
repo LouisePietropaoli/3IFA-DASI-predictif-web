@@ -13,6 +13,8 @@ action/AuthentifierClientAction.class
 serialisation/ClassementMediumSerialisation.class
 util/Utility.class
 action/RecupererHistoriqueConsultationsClientAction.class
+util/Utility.class
+control/ActionServlet.class
 action/CommencerConsultationAction.class
 serialisation/DetailsProfilClientAvecProfilAstralSeralisation.class
 action/RecupererDetailsMediumAction.class

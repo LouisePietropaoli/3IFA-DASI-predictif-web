@@ -1,3 +1,5 @@
+package control;
+
 
 import action.Action;
 import action.AuthentifierAction;
@@ -54,7 +56,6 @@ public class ActionServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         request.setCharacterEncoding("UTF-8");
-        request.getParameter("test");
         String todo = request.getParameter("todo");
 
         Action action = null;
@@ -79,7 +80,7 @@ public class ActionServlet extends HttpServlet {
             if (sessionUserId == null) {
                 response.sendError(403, "Accès interdit : Aucun utilisateur authentifié.");
             } else if (todo.equals("deconnecter")) {
-                // action = new DeconnexionAction();
+               //  action = new DeconnexionAction();
                 //action.executer(request);
                 session.invalidate();
                 PrintWriter out = response.getWriter();
