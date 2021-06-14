@@ -23,6 +23,7 @@ public class RecupererStatistiquesEmployeAction extends Action {
         double pourcentageClientEmploye = service.recupererPourcentageClientEmploye(employe);
         request.setAttribute("nbClientEmploye", nbClientEmploye);
         request.setAttribute("pourcentageClientEmploye", pourcentageClientEmploye);
+        request.setAttribute("employe", employe);
     }
 
 }

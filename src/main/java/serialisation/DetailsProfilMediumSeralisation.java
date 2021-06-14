@@ -25,9 +25,9 @@ public class DetailsProfilMediumSeralisation extends Serialisation {
         if (medium != null) {
             JsonObject jsonClient = new JsonObject();
             jsonClient.addProperty("id", medium.getId());
-            jsonClient.addProperty("nom", medium.get());
-            jsonClient.addProperty("prenom", client.getPrenom());
-            jsonClient.addProperty("email", client.getEmail());
+            //jsonClient.addProperty("nom", medium.get());
+            //jsonClient.addProperty("prenom", client.getPrenom());
+            //jsonClient.addProperty("email", client.getEmail());
             container.add("client", jsonClient);
         } else {
             container.addProperty("erreur", true);

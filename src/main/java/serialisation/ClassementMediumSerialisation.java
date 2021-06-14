@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Medium;
+import static util.Utility.recupererTypeMedium;
 
 /**
  * renvoie le classement des mediums */
@@ -30,7 +31,7 @@ public class ClassementMediumSerialisation extends Serialisation {
                 jsonMedium.addProperty("id", medium.getId());
                 jsonMedium.addProperty("name", medium.getDesignation());
                 jsonMedium.addProperty("nbConsultations", medium.getNbConsultations());
-                //TODO : get class
+                jsonMedium.addProperty("type", recupererTypeMedium(medium));
                 jsonListeMedium.add(jsonMedium);
             }
             container.add("classementMediums", jsonListeMedium);

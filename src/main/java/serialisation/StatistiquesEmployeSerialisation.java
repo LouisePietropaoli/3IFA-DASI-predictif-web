@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.data.Employe;
 
 /**
  * renvoie les statistiques d'un employé) - nombre de consultations - nombre de
@@ -18,12 +19,14 @@ public class StatistiquesEmployeSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
-
+           
+         Employe employe = (Employe) request.getAttribute("employe");
          Long nbClientEmploye = (Long) request.getAttribute("nbClientEmploye");
          double pourcentageClientEmploye = (double) request.getAttribute("pourcentageClientEmploye");
          
 
-        if (nbClientEmploye != null) {
+        if (nbClientEmploye != null && employe != null) {
+            container.addProperty("nbConsultationsEmploye", employe.getNbConsultations());
             container.addProperty("nbClientEmploye", nbClientEmploye.doubleValue());
             container.addProperty("pourcentageClientEmploye", pourcentageClientEmploye);
         } else {

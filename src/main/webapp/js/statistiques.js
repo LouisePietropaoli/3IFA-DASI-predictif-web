@@ -9,6 +9,7 @@ $(document).ready(function () {
         })
                 .done(function (response) {
                     console.log(response);
+                    $('#nbConsultations').text(response.nbConsultationsEmploye)
                     $('#nbClient').text(response.nbClientEmploye)
                     $('#pourcentageClient').text(response.pourcentageClientEmploye)
                 }
@@ -34,7 +35,7 @@ $(document).ready(function () {
                         var li = $('<li/>')
                             .appendTo(cList);
                         var aaa = $('<a/>')
-                            .text(response.classementMediums[i].name + " " + response.classementMediums[i].nbConsultations)
+                            .text(response.classementMediums[i].name + " " + response.classementMediums[i].type + " " +response.classementMediums[i].nbConsultations)
                             .appendTo(li);
                     });
                 }
