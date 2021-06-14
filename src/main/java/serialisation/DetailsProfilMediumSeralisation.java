@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import metier.data.Medium;
 
 /**
  * construit les détails sur un médium
@@ -19,6 +20,18 @@ public class DetailsProfilMediumSeralisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
 
+                Medium medium = (Medium) request.getAttribute("medium");
+
+        if (medium != null) {
+            JsonObject jsonClient = new JsonObject();
+            jsonClient.addProperty("id", medium.getId());
+            jsonClient.addProperty("nom", medium.get());
+            jsonClient.addProperty("prenom", client.getPrenom());
+            jsonClient.addProperty("email", client.getEmail());
+            container.add("client", jsonClient);
+        } else {
+            container.addProperty("erreur", true);
+        }
         //TODO
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();

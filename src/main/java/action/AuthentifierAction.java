@@ -15,7 +15,7 @@ public class AuthentifierAction extends Action {
         String mode = request.getParameter("mode");
         Service service = new Service();
         HttpSession session = request.getSession();
-
+        
         if ("client".equals(mode)) {
             Client client;
             client = service.authentifierClient(email, motDePasse);

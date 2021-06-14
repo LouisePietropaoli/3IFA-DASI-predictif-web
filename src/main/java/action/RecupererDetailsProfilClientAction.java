@@ -9,7 +9,7 @@ public class RecupererDetailsProfilClientAction extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
-
+        
     }
 
 }
