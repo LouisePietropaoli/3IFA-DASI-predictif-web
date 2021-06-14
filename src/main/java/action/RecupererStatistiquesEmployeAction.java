@@ -17,9 +17,8 @@ public class RecupererStatistiquesEmployeAction extends Action {
     @Override
     public void executer(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        Long employeId = Long.parseLong(session.getAttribute("userSessionId").toString(), 10);
+        Employe employe = (Employe) session.getAttribute("employe");
         Service service = new Service();
-        Employe employe = service.rechercherEmployeParId(employeId);
         long nbClientEmploye = service.recupererNombreClientEmploye(employe);
         double pourcentageClientEmploye = service.recupererPourcentageClientEmploye(employe);
         request.setAttribute("nbClientEmploye", nbClientEmploye);

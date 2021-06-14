@@ -18,9 +18,8 @@ public class RecupererHistoriqueConsultationsClientAvecDispoAction extends Actio
     @Override
     public void executer(HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        Long clientId = Long.parseLong(session.getAttribute("userSessionId").toString(), 10);
+        Client client =  (Client) session.getAttribute("client");
         Service service = new Service();
-        Client client = service.rechercherClientParId(clientId);
         List<Consultation> historiqueConsultation = service.recupererHistoriqueConsultationsClient(client);
         Map<Long, Boolean> dispos =  new HashMap<>();
         for (Consultation consult : historiqueConsultation) {
