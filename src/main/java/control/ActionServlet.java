@@ -85,6 +85,7 @@ public class ActionServlet extends HttpServlet {
              */
             action = new RecupererDetailsMediumAction();
             serialisation = new DetailsProfilMediumSeralisation();
+            
         } else if (todo.equals("creer-compte-client")) {
             /**
              * utilisé pour la création d'un compte client pour ensuite afficher
