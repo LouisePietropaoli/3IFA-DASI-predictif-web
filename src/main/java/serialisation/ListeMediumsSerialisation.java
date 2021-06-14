@@ -14,6 +14,7 @@ import metier.data.Cartomancien;
 import metier.data.Medium;
 import metier.data.Spirite;
 import metier.enums.Genre;
+import util.Utility;
 
 /**
  * renvoie la liste des mediums avec leur description simple id | genre |
@@ -33,9 +34,9 @@ public class ListeMediumsSerialisation extends Serialisation {
 
                 JsonObject jsonMedium = new JsonObject();
                 jsonMedium.addProperty("id", medium.getId());
-                jsonMedium.addProperty("genre", recupererGenreMedium(medium));
+                jsonMedium.addProperty("genre", Utility.recupererGenreMedium(medium));
                 jsonMedium.addProperty("designation", medium.getId());
-                jsonMedium.addProperty("type", recupererTypeMedium(medium));
+                jsonMedium.addProperty("type", Utility.recupererTypeMedium(medium));
                 jsonMedium.addProperty("presentation", medium.getPresentation());
                 
                 jsonListeMediums.add(jsonMedium);
@@ -49,21 +50,5 @@ public class ListeMediumsSerialisation extends Serialisation {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         gson.toJson(container, out);
         out.close();
-    }
-
-    private String recupererTypeMedium(Medium medium) {
-        String type = "";
-        if (medium instanceof Astrologue) {
-            type = "Astrologue";
-        } else if (medium instanceof Cartomancien) {
-            type = "Cartomancien";
-        } else if (medium instanceof Spirite) {
-            type = "Spirite";
-        }
-        return type;
-    }
-
-    private String recupererGenreMedium(Medium medium) {
-        return medium.getGenre() == Genre.F ? "Femme" : "Homme";
     }
 }
