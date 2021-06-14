@@ -1,5 +1,4 @@
 serialisation/InitialisationAccueilClientSerialisation.class
-ActionServlet.class
 serialisation/ConnexionSerialisation.class
 action/RecupererDetailsProfilClientAvecProfilAstralAction.class
 action/DemanderPredictionsAction.class
@@ -12,6 +11,8 @@ action/RecupererHistoriqueConsultationsClientAvecDispoAction.class
 serialisation/ClassementMediumSerialisation.class
 action/AuthentifierClientAction.class
 action/RecupererHistoriqueConsultationsClientAction.class
+util/Utility.class
+control/ActionServlet.class
 action/CommencerConsultationAction.class
 serialisation/DetailsProfilClientAvecProfilAstralSeralisation.class
 action/RecupererDetailsMediumAction.class

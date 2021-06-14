@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RetourSuccesErreurSerialisation extends Serialisation {
 
@@ -21,6 +22,7 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
         }
         container.addProperty("erreur", erreur);
         container.addProperty("todo", true);
+
 
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();

@@ -14,12 +14,13 @@ public class AuthentifierAction extends Action {
         String motDePasse = request.getParameter("motDePasse");
         String mode = request.getParameter("mode");
         Service service = new Service();
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
 
         if ("client".equals(mode)) {
             Client client;
             client = service.authentifierClient(email, motDePasse);
             if (client != null) {
+                //mettre les attr du client dans la session
                 session.setAttribute("userSessionId", client.getId());
             } else {
                 request.setAttribute("erreur", true);
