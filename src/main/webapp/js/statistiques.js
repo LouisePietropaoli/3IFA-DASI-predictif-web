@@ -9,9 +9,9 @@ $(document).ready(function () {
         })
                 .done(function (response) {
                     console.log(response);
-                    $('#nbConsultations').text(response.nbConsultationsEmploye)
-                    $('#nbClient').text(response.nbClientEmploye)
-                    $('#pourcentageClient').text(response.pourcentageClientEmploye)
+                    document.getElementById('nbConsultations').textContent += response.nbConsultationsEmploye;
+                    document.getElementById('nbClient').textContent += response.nbClientEmploye;
+                    document.getElementById('pourcentageClient').textContent += response.pourcentageClientEmploye;
                 }
                 )
                 .fail(function () { // Appel KO => erreur technique à gérer
