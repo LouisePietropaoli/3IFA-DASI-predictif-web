@@ -4,49 +4,57 @@
     <head>
         <meta charset="UTF-8">
         <title>Connexion</title>
-        <link rel="shortcut icon" href="./images/IF-ico-round.png"> <!-- icône de la page ("favicon") -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <script src="js/connexion.js"></script>
-        <style> /* Feuille de Style CSS (dans la page) */
-            h1 { text-align: center; color: darkviolet; border-bottom: 2px dashed darkviolet; }
-            h2 { text-align: center; font-variant: small-caps; }
-            table.formulaire-connexion { margin: 10px auto; padding: 10px; border-radius: 10px; border: 2px solid violet; }
-            button.joli-bouton { padding: 3px 10px; border-radius: 5px; border-width: 3px; cursor: pointer; }
-            .centrer { text-align: center; }
-        </style>
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
     <body>
-        <h1 id="connexion-titre"></h1>
-        <table class="formulaire-connexion">
-            <tr>
-                <th><label for="champ-email">Identifiant</label></th>
-                <td><input type="text" id="champ-email" size="20" /></td>
-            </tr>
-            <tr>
-                <th><label for="champ-mot-de-passe">Mot de passe</label></th>
-                <td><input type="password" id="champ-mot-de-passe" /></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="centrer">
-                    <button id="bouton-connexion" class="joli-bouton">Se connecter</button>
-                </td>
-            </tr>
-            <tr>
-                <td id="ligne-message" colspan="2" class="centrer"></td> 
-            </tr>
-        </table>
-        <div>
-            <button>
-                <a href="creation-compte.html">
-                    Créer un compte
-                </a>
-            </button>
+        <div class="barre_navigation">
+            <div class="image is-128x128">
+                <a href="./index.html"><img class="is-rounded" src="./img/logo.jpg" /></a>
+            </div>
+            <div class="titres">
+                <p class="title is-1">PREDICT'IF</p>
+            </div>
+            <div class="icons">
+                <div class="has-text-centered" style="margin-right: 1em">
+                    <button class="button is-medium"><a href="creation-compte.html">Créer un compte</a></button>
+                </div>          
+            </div>
         </div>
-        <div id="lien-portail-interne">
-            <a href="connexion.html">Portail interne</a>
-        </div>
-        <div id="lien-portail-client">
-            <a href="connexion.html?mode=client">Portail client</a>
-        </div>
+        
+        
+        <div class="contenuFormulaire">
+            <div class='box has-text-centered'>
+                <p class="title is-3" id="connexion-titre"></p>
+                
+                <table style="margin:auto; width: 20em;">
+                    <tr>
+                        <th><label for="champ-email">Identifiant</label></th>
+                        <td><input type="text" id="champ-email" size="20" /></td>
+                    </tr>
+                    <tr>
+                        <th><label for="champ-mot-de-passe">Mot de passe</label></th>
+                        <td><input type="password" id="champ-mot-de-passe" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="centrer">
+                            <button id="bouton-connexion" class="button" style="margin-top: 1em">Se connecter</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="ligne-message" colspan="2" class="centrer"></td> 
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="lien-portail-interne" class="has-text-centered">
+                <a href="connexion.html">Portail interne</a>
+            </div>
+            <div id="lien-portail-client" class="has-text-centered">
+                <a href="connexion.html?mode=client">Portail client</a>
+            </div>
+        </div>        
     </body>
 </html>
