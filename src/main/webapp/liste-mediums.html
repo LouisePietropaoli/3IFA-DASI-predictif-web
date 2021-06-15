@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Liste des médiums</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+        <script src="js/liste-mediums.js"></script>
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    </head>
+    <body>
+        <div class="barre_navigation">
+            <div class="image is-128x128">
+                <img class="is-rounded" src="./img/logo.jpg" />
+            </div>
+            <div class="titres">
+                <p class="title is-1">PREDICT'IF</p>
+                <p class="subtitle is-4">Portail interne</p>
+            </div>
+            <div class="icons">
+                <a class="iconMenu image is-48x48" href="./accueil-employe.html" title="Accueil"><img class="is-rounded" src="./img/home.jpg" /></a>
+                <a class="iconMenu image is-48x48" href="./liste-mediums.html" title="Liste des médiums"><img class="is-rounded" src="./img/mediums.png" /></a>
+                <a class="iconMenu image is-48x48" href="./statistiques.html" title="Statistiques"><img class="is-rounded" src="./img/stats.jpg" /></a>
+                <img id="bouton-deconnexion" class="iconMenu image is-48x48" src="./img/exit.png"  title="Se déconnecter"/>
+            </div>
+        </div>
+        
+        
+        <div class="contenu">
+            <div id="liste_medium" class='box'>
+                <p class="title is-3">Liste des mediums</p>
+            
+                <ul id="liste-mediums"></ul>
+            </div>
+        </div>     
+    </body>
+</html>
