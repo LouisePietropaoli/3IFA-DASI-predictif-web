@@ -1,6 +1,13 @@
 package action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import metier.data.Client;
+import metier.data.Consultation;
+import metier.data.Employe;
+import metier.data.Medium;
+import metier.enums.Statut;
+import metier.service.Service;
 
 /**
  * récupère la consultation associée au médium authentifié grâce à la session
@@ -13,8 +20,12 @@ public class InitialiserAccueilEmployeAction extends Action {
 
     @Override
     public void executer(HttpServletRequest request) {
-
-        //TODO
+        HttpSession session = request.getSession();
+        Employe employe = (Employe) session.getAttribute("employe");
+        Service service = new Service();
+        Consultation consultationEnCours = service.recupererConsultationEnCours(employe);
+        System.out.println(consultationEnCours); 
+        request.setAttribute("consultation", consultationEnCours);
     }
 
 }

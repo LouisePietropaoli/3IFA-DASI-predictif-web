@@ -179,7 +179,7 @@ public class ActionServlet extends HttpServlet {
                      * astral) sauf son mot de passe L'historique client n'est
                      * pas renvoyé
                      */
-                    case "initialser-accueil-employe": {
+                    case "initialiser-accueil-employe": {
                         action = new InitialiserAccueilEmployeAction();
                         serialisation = new InitialisationAccueilEmployeSerialisation();
                     }

@@ -4,15 +4,91 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil - Employé</title>
-        <link rel="shortcut icon" href="./images/IF-ico-round.png"> 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
         <script src="js/accueil-employe.js"></script>
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
     <body>
-        <h1>ACCUEIL EMPLOYE</h1>
-        <button id="bouton-deconnexion" class="joli-bouton">
-            Se déconnecter
-        </button>
-        <a href="./statistiques.html">Statistiques</a>
+        <div class="barre_navigation">
+            <div class="image is-128x128">
+                <img class="is-rounded" src="./img/logo.jpg" />
+            </div>
+            <div class="titres">
+                <p class="title is-1">PREDICT'IF</p>
+                <p class="subtitle is-4">Portail interne</p>
+            </div>
+            <div class="icons">
+                <a class="iconMenu image is-48x48" href="./accueil-employe.html" title="Accueil"><img class="is-rounded" src="./img/home.jpg" /></a>
+                <a class="iconMenu image is-48x48" href="./liste-mediums.html" title="Liste des médiums"><img class="is-rounded" src="./img/mediums.png" /></a>
+                <a class="iconMenu image is-48x48" href="./statistiques.html" title="Statistiques"><img class="is-rounded" src="./img/stats.jpg" /></a>
+                <img id="bouton-deconnexion" class="iconMenu image is-48x48" src="./img/exit.png"  title="Se déconnecter"/>
+            </div>
+        </div>
+        
+        <div class="contenu">
+            <div id="aucune_consultation" class='box'>
+                <p class="title is-3">Pas de consultation en cours</p>
+            </div>
+
+            <div id="demande_consultation" class='box'>
+                <p class="title is-3">Demande de consultation</p>
+                <p id="heure_demande" class="texte">Heure de la demande : </p>
+                <p id="nom_client" class="texte">Client : </p>
+                <div style="display: flex; align-items: center">
+                    <p id="medium" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
+                    <img onclick="afficherDetailsMedium()" class="image is-16x16" src="./img/loupe.png" 
+                         style="margin-left: 1em"/>
+                </div>
+                <div class="has-text-centered">
+                    <button class="button is-medium" onclick="commencerConsultation()">Commencer la consultation</button>
+                </div>
+            </div>
+
+            <div id="en_consultation" class='box'>
+                <p class="title is-3">En consultation</p>
+                <p id="heure_debut" class="texte">Heure de début : </p>
+                <p id="nom_client2" class="texte">Client : </p>
+                <div style="display: flex; align-items: center">
+                    <p id="medium" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
+                    <img onclick="afficherDetailsMedium()" class="image is-16x16" src="./img/loupe.png" 
+                         style="margin-left: 1em"/>
+                </div>                <p class="texte">Commentaire</p>
+                <textarea></textarea>
+                <div class="has-text-centered">
+                    <button class="button is-medium" onclick="commencerConsultation()">Terminer la consultation</button>
+                </div>
+            </div>
+
+            <div id="fiche_client" class='box'>
+                <p class="title is-4" id="fc_nom_client">Fiche client : </p>
+                <p class="title is-5 texte">Informations générales</p>
+                <p id="fc_date_naissance" class="texte">Date de naissance : </p>
+                <p id="fc_adresse" class="texte">Adresse : </p>
+                <p id="fc_adresse_mail" class="texte">Adresse mail : </p>
+                <p id="fc_telephone" class="texte">Téléphone : </p>
+                
+                <div class="separateur"></div>
+                
+                <p class="title is-5 texte">Son profil astral</p>
+                <p id="signe_zodiaque" class="texte">Son signe du zodiaque : </p>
+                <p id="signe_chinois" class="texte">Son signe astrologique chinois : </p>
+                <p id="couleur_porte_bonheur" class="texte">Sa couleur porte-bonheur : </p>
+                <p id="animal_totem" class="texte">Son animal totem : </p>
+                <div class="has-text-centered">
+                <button id="button_historique" class="button" onclick="afficherHistoriqueCConsultation()">Afficher l'historique des consultations</button>
+                </div>
+            </div>
+
+            <div id="predictions" class='box'>
+                <p class="title is-3">Prédictions</p>
+                <p class="texte">Amour : </p><input type='number' id='amour' name='amour' min="1" max="4" value="1" />
+                <p class="texte">Santé : </p><input type='number' id='sante' name='sante'  min="1" max="4" value="1" />
+                <p class="texte">Travail : </p><input type='number' id='travail' name='travail'  min="1" max="4" value="1" />
+                <div class="has-text-centered">
+                    <button id="button_prediction" class="button is-medium" onclick="demanderPrediction()">Demander une prédiction</button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
