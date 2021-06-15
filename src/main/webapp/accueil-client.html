@@ -4,14 +4,31 @@
     <head>
         <meta charset="UTF-8">
         <title>Accueil</title>
-        <link rel="shortcut icon" href="./images/IF-ico-round.png"> 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="js/accueil-client.js"></script>
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
     <body>
-        <h1>ACCUEIL CLIENT</h1>
-        <button id="bouton-deconnexion" class="joli-bouton">
-            Se déconnecter
-        </button>
+        <div class="barre_navigation">
+            <div class="image is-128x128">
+                <img class="is-rounded" src="./img/logo.jpg" />
+            </div>
+            <div class="titres">
+                <p class="title is-1">PREDICT'IF</p>
+            </div>
+            <div class="icons">
+                <a class="iconMenu image is-48x48" href="./accueil-client.html" title="Accueil"><img class="is-rounded" src="./img/home.jpg" /></a>
+                <a class="iconMenu image is-48x48" href="./fiche-client.html" title="Profil"><img class="is-rounded" src="./img/personne.png" /></a>
+                <a class="iconMenu image is-48x48" href="./historique.html" title="Hitorique"><img class="is-rounded" src="./img/historique.png" /></a>
+                <img id="bouton-deconnexion" class="iconMenu image is-48x48" src="./img/exit.png"  title="Se déconnecter"/>
+            </div>
+        </div>
+        
+        <div class="contenu">
+            <div class='box'>
+                <p class="title is-3">Accueil</p>
+            </div>
+        </div>
     </body>
 </html>

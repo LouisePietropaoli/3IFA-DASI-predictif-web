@@ -6,13 +6,35 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Votre profil</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
         <script src="js/fiche-client.js"></script>
+        <link rel="stylesheet" href="./css/menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
     <body>
-        <ul id="historique"></ul>
+        <div class="barre_navigation">
+            <div class="image is-128x128">
+                <img class="is-rounded" src="./img/logo.jpg" />
+            </div>
+            <div class="titres">
+                <p class="title is-1">PREDICT'IF</p>
+            </div>
+            <div class="icons">
+                <a class="iconMenu image is-48x48" href="./accueil-client.html" title="Accueil"><img class="is-rounded" src="./img/home.jpg" /></a>
+                <a class="iconMenu image is-48x48" href="./fiche-client.html" title="Profil"><img class="is-rounded" src="./img/personne.png" /></a>
+                <a class="iconMenu image is-48x48" href="./historique.html" title="Hitorique"><img class="is-rounded" src="./img/historique.png" /></a>
+                <img id="bouton-deconnexion" class="iconMenu image is-48x48" src="./img/exit.png"  title="Se déconnecter"/>
+            </div>
+        </div>
+        
+        <div class="contenu">
+            <div class='box'>
+                <p class="title is-3">Profil</p>
+                <ul id="historique"></ul>
+            </div>
+        </div>
     </body>
 </html>
