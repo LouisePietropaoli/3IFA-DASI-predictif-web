@@ -33,15 +33,18 @@ public class Utility {
         jsonMedium.addProperty("presentation", medium.getPresentation());
         switch (type) {
             case "Astrologue":
-                Astrologue astrologue = (Astrologue)medium;
+                Astrologue astrologue = (Astrologue) medium;
+                jsonMedium.addProperty("type", "Astrologue");
                 jsonMedium.addProperty("formation", astrologue.getFormation());
                 jsonMedium.addProperty("anneePromotion", astrologue.getAnneePromotion());
                 break;
             case "Spirite":
-                Spirite spirite = (Spirite)medium;
+                jsonMedium.addProperty("type", "Spirite");
+                Spirite spirite = (Spirite) medium;
                 jsonMedium.addProperty("support", spirite.getSupport());
                 break;
             default:
+                jsonMedium.addProperty("type", "Cartomancien");
                 break;
         }
 
