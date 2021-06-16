@@ -13,7 +13,7 @@ $(document).ready(function () {
                     if(consultationEnCours) {
                         var statutConsultation = response.statut; 
                         
-                        document.getElementById('button_prediction').disabled = false;
+                        document.getElementById('demande_prediction').disabled = false;
                         
                         document.getElementById('fc_nom_client').textContent += response.client.prenom + " " + response.client.nom;
                         document.getElementById('fc_date_naissance').textContent += response.client.date_naissance;
@@ -41,7 +41,6 @@ $(document).ready(function () {
                         
                         
                         if(statutConsultation === "DEMANDEE") {
-                            console.log("consultation demandée");
                             document.getElementById('aucune_consultation').style.display = 'none';
                             document.getElementById('demande_consultation').style.display = 'block';
                             document.getElementById('en_consultation').style.display = 'none';
@@ -52,7 +51,6 @@ $(document).ready(function () {
                             document.getElementById('medium').innerHTML += response.medium.designation + " | " +
                                     response.medium.type;
                         }else {
-                            console.log("consultation en cours");
                             document.getElementById('aucune_consultation').style.display = 'none';
                             document.getElementById('demande_consultation').style.display = 'none';
                             document.getElementById('en_consultation').style.display = 'block';
@@ -63,20 +61,17 @@ $(document).ready(function () {
                             document.getElementById('medium2').textContent += response.medium.designation;
                         }
                     }else{
-                        console.log("pas de consultation en cours");
                         document.getElementById('aucune_consultation').style.display = 'block';
                         document.getElementById('demande_consultation').style.display = 'none';
                         document.getElementById('en_consultation').style.display = 'none';
                         document.getElementById('fiche_client').style.display = 'none';
-                        document.getElementById('button_prediction').disabled = true;
+                        document.getElementById('demande_prediction').disabled = true;
                     }
                 }
                 )
                 .fail(function () {
-                    console.log("fail");
                 })
                 .always(function () { 
-                    console.log("always");
                 });
     
     
@@ -96,6 +91,69 @@ $(document).ready(function () {
                 .fail(function () { // Appel KO => erreur technique à gérer
                 })
                 .always(function () { // facultatif: appelé après le .done() ou le .fail()
+                });
+    });
+    
+    $('#commencer_consultation').on('click', function () {
+        $.ajax({
+            url: './ActionServlet',
+            type: 'POST',
+            data: {
+                todo: 'commencer-consultation'
+            },
+            dataType: 'json'
+        })
+                .done(function () {
+                    window.location.reload();
+                }
+                )
+                .fail(function () { 
+                })
+                .always(function () { 
+                });
+    });
+    
+    $('#terminer_consultation').on('click', function () {
+        $.ajax({
+            url: './ActionServlet',
+            type: 'POST',
+            data: {
+                todo: 'terminer-consultation',
+                commentaire:  $('#commentaire').val()
+            },
+            dataType: 'json'
+        })
+                .done(function () {
+                    window.location.reload();
+                }
+                )
+                .fail(function () { 
+                })
+                .always(function () { 
+                });
+    });
+    
+    $('#demande_prediction').on('click', function () {
+        $.ajax({
+            url: './ActionServlet',
+            type: 'POST',
+            data: {
+                todo: 'demander-predictions',
+                amour:  $('#amour').val(),
+                sante:  $('#sante').val(),
+                travail:  $('#travail').val()
+            },
+            dataType: 'json'
+        })
+                .done(function (response) {
+                    document.getElementById('amour_res').textContent = '"'+response.amour+'"'; 
+                    document.getElementById('sante_res').textContent = '"'+response.sante+'"'; 
+                    document.getElementById('travail_res').textContent = '"'+response.travail+'"'; 
+                }
+                )
+                .fail(function () { 
+                })
+                .always(function () { 
                 });
     });
 });

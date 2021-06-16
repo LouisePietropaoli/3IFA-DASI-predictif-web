@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,10 +59,15 @@ public class InitialisationAccueilEmployeSerialisation extends Serialisation {
             jsonClient.addProperty("animal_totem", client.getAnimalTotem());
             container.add("client",jsonClient);           
             
+            String pattern = "dd-MM-yyyy HH:mm:ss";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                
             if(consultationEnCours.getStatut()==Statut.DEMANDEE) {
-                container.addProperty("heure_demande", consultationEnCours.getDateDemande().getHours() + "h" + consultationEnCours.getDateDemande().getMinutes());
+                String dateDemande = simpleDateFormat.format(consultationEnCours.getDateDemande());
+                container.addProperty("heure_demande", dateDemande);
             }else if(consultationEnCours.getStatut()==Statut.EN_COURS) {
-                container.addProperty("heure_debut", consultationEnCours.getDateHeureDebut().getHours() + "h" + consultationEnCours.getDateDemande().getMinutes());
+                String dateDebut = simpleDateFormat.format(consultationEnCours.getDateHeureDebut());
+                container.addProperty("heure_debut", dateDebut);
             }
         }else{
             container.addProperty("consultationEnCours",false);

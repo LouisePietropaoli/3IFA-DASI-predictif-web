@@ -3,6 +3,7 @@ package action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import metier.data.Consultation;
+import metier.data.Employe;
 import metier.service.Service;
 
 /**
@@ -15,23 +16,24 @@ public class CommencerConsultationAction extends Action {
     public void executer(HttpServletRequest request) {
             HttpSession session = request.getSession(false);
             Service service = new Service();
-            Consultation consultation = (Consultation)session.getAttribute("consultation");
-           if (consultation != null)
-           {
-               consultation = service.commencerConsultation(consultation);
-               if (consultation != null)
-               {
-                   request.setAttribute("consultation", consultation);
-               }
-               else
-               {
-                   request.setAttribute("erreur", true);
-               }
-           }
-           else
-           {
-               request.setAttribute("erreur", true);
-           }
+            Employe employe = (Employe)session.getAttribute("employe");
+            Consultation consultation = service.recupererConsultationEnCours(employe);
+            if (consultation != null)
+            {
+                consultation = service.commencerConsultation(consultation);
+                if (consultation != null)
+                {
+                    request.setAttribute("erreur", "Pas d'erreur");
+                }
+                else
+                {
+                    request.setAttribute("erreur", "Erreur lors du démarrage");
+                }
+            }
+            else
+            {
+                request.setAttribute("erreur", "Erreur lors de la récupération");
+            }
     }
 
 }

@@ -24,7 +24,6 @@ public class InitialiserAccueilEmployeAction extends Action {
         Employe employe = (Employe) session.getAttribute("employe");
         Service service = new Service();
         Consultation consultationEnCours = service.recupererConsultationEnCours(employe);
-        System.out.println(consultationEnCours); 
         request.setAttribute("consultation", consultationEnCours);
     }
 

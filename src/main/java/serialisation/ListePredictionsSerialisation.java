@@ -16,8 +16,10 @@ public class ListePredictionsSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
-
-        //TODO
+        container.addProperty("amour", (String) request.getAttribute("amour"));
+        container.addProperty("travail", (String) request.getAttribute("travail"));
+        container.addProperty("sante", (String) request.getAttribute("sante"));
+                
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         gson.toJson(container, out);
