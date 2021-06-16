@@ -30,26 +30,41 @@ $(document).ready(function () {
                 .done(function (response) {
                     console.log(response);
                     var cList = $('#mediumlist');
+                    var position = 1;
                     $.each(response.classementMediums, function(i)
                     {
+                        var div1 = $('<div>', {
+                            "class": "box", 
+                        })
+                                .appendTo(cList); 
+                        
                         var li = $('<li/>')
-                                .appendTo(cList);
+                                .appendTo(div1);
 
                         var div = $("<div/>", {
                             "style": "display: flex; align-items: center", 
                         }).appendTo(li);
-
+                        
                         var p = $("<p/>", {
                             "class": "texte",
-                            "style": "width: -moz-fit-content"
-                        }).text(response.classementMediums[i].name + " " + response.classementMediums[i].type + " " +response.classementMediums[i].nbConsultations)
+                            "style": "width: -moz-fit-content; font-size: 1.4em"
+                        }).text(position + " - " + response.classementMediums[i].name + " | " + response.classementMediums[i].type)
                                 .appendTo(div);
+                        
                          var img = $("<img/>", {
                             "onclick": "afficherDetailsMedium()",  //TODO : ID MEDIUM
                             "class" : "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
                         }).appendTo(div);
+                        
+                        var p = $("<p/>", {
+                            "class": "texte",
+                            "style": "width: -moz-fit-content"
+                        }).text("Nombre de consultations : " +response.classementMediums[i].nbConsultations)
+                                .appendTo(li);
+                        
+                        position++;
                     });
                 }
                 )
