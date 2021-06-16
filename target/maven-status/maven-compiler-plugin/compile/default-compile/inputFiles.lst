@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/ClassementMediumSerialisation.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/RecupererHistoriqueConsultationsClientAction.java
@@ -73,3 +74,41 @@
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/DetailsProfilClientSeralisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/CommencerConsultationAction.java
 >>>>>>> master
+=======
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ClassementMediumSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\InitialisationAccueilEmployeSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\HistoriqueConsultationsClientAvecDispoSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererHistoriqueConsultationsClientAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\InitialiserAccueilEmployeAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\control\ActionServlet.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\AuthentifierAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\AuthentifierClientAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\DeconnecterAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererClassementMedium.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ConnexionSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererDetailsProfilClientAvecProfilAstralAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\ListerMediumsAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\ReserverMediumAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\util\Utility.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\RetourSuccesErreurSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\CommencerConsultationAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ConsultationSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\HistoriqueConsultationsClientSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererDetailsMediumAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\InitialiserAccueilClientAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\Serialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\DetailsProfilClientSeralisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ListePredictionsSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererHistoriqueConsultationsClientAvecDispoAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\DetailsProfilMediumSeralisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererDetailsProfilClientAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\TerminerConsultationAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\DemanderPredictionsAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\RecupererStatistiquesEmployeAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\InitialisationAccueilClientSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\Action.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\action\CreerCompteClientAction.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\StatistiquesEmployeSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ClientSerialisation.java
+D:\Documents\INSA\S2\Période école 4\DASI - Développement d'applications pour les systèmes d'information\Projet\Git\3IFA-DASI-predictif-web\src\main\java\serialisation\ListeMediumsSerialisation.java
+>>>>>>> Stashed changes
