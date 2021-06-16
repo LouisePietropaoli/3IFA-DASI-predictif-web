@@ -10,6 +10,7 @@ serialisation/HistoriqueConsultationsClientAvecDispoSerialisation.class
 action/RecupererHistoriqueConsultationsClientAvecDispoAction.class
 serialisation/ClassementMediumSerialisation.class
 action/AuthentifierClientAction.class
+serialisation/ConsultationSerialisation.class
 action/RecupererHistoriqueConsultationsClientAction.class
 util/Utility.class
 control/ActionServlet.class
