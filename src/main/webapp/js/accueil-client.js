@@ -36,3 +36,19 @@ $(document).ready(function () {
                 });
     });
 });
+
+function afficherDetails(){
+    var element = $('#modalDetails').addClass("is-active");
+}
+
+function cacheModale2(){
+    var element = $('#modalDetails').removeClass("is-active");
+}
+
+function afficherReservation(){
+    var element = $('#modalReservation').addClass("is-active");
+}
+
+function cacheModale3(){
+    var element = $('#modalReservation').removeClass("is-active");
+}

@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 serialisation/InitialisationAccueilClientSerialisation.class
 serialisation/ConnexionSerialisation.class
 action/DemanderPredictionsAction.class
@@ -22,7 +21,6 @@ serialisation/InitialisationAccueilEmployeSerialisation.class
 serialisation/DetailsProfilMediumSeralisation.class
 serialisation/ClientSerialisation.class
 action/RecupererDetailsProfilClientAction.class
-.netbeans_automatic_build
 action/DeconnecterAction.class
 action/ListerMediumsAction.class
 action/ReserverMediumAction.class
@@ -36,41 +34,3 @@ action/RecupererStatistiquesEmployeAction.class
 action/InitialiserAccueilEmployeAction.class
 action/InitialiserAccueilClientAction.class
 serialisation/HistoriqueConsultationsClientSerialisation.class
-=======
-serialisation\HistoriqueConsultationsClientAvecDispoSerialisation.class
-serialisation\HistoriqueConsultationsClientSerialisation.class
-action\AuthentifierClientAction.class
-serialisation\Serialisation.class
-action\CommencerConsultationAction.class
-action\ReserverMediumAction.class
-action\DemanderPredictionsAction.class
-action\RecupererDetailsMediumAction.class
-serialisation\InitialisationAccueilClientSerialisation.class
-serialisation\StatistiquesEmployeSerialisation.class
-action\DeconnecterAction.class
-serialisation\DetailsProfilMediumSeralisation.class
-action\AuthentifierAction.class
-serialisation\ListeMediumsSerialisation.class
-action\CreerCompteClientAction.class
-serialisation\ClassementMediumSerialisation.class
-action\RecupererDetailsProfilClientAction.class
-serialisation\ConnexionSerialisation.class
-action\Action.class
-action\ListerMediumsAction.class
-serialisation\ListePredictionsSerialisation.class
-serialisation\ClientSerialisation.class
-action\RecupererClassementMedium.class
-action\RecupererStatistiquesEmployeAction.class
-action\TerminerConsultationAction.class
-serialisation\DetailsProfilClientSeralisation.class
-action\InitialiserAccueilClientAction.class
-action\RecupererHistoriqueConsultationsClientAction.class
-util\Utility.class
-action\RecupererHistoriqueConsultationsClientAvecDispoAction.class
-serialisation\InitialisationAccueilEmployeSerialisation.class
-action\InitialiserAccueilEmployeAction.class
-control\ActionServlet.class
-action\RecupererDetailsProfilClientAvecProfilAstralAction.class
-serialisation\ConsultationSerialisation.class
-serialisation\RetourSuccesErreurSerialisation.class
->>>>>>> Stashed changes

@@ -41,7 +41,7 @@ $(document).ready(function () {
                         
                         var button = $("<button/>", {
                             "class" : "button", 
-                        }).prop("disabled", !response.historiqueConsultation[i].dispo).appendTo(div);
+                        }).click(function(){if(!response.historiqueConsultation[i].dispo){reserverMedium(response.historiqueConsultation[i].idMedium); afficherReservation(); }}).prop("disabled", !response.historiqueConsultation[i].dispo).appendTo(div);
                         
                         var span = $("<span/>", {}).text("Réserver").appendTo(button);
                     });
@@ -78,4 +78,12 @@ function afficherDetails(){
 
 function cacheModale2(){
     var element = $('#modalDetails').removeClass("is-active");
+}
+
+function afficherReservation(){
+    var element = $('#modalReservation').addClass("is-active");
+}
+
+function cacheModale3(){
+    var element = $('#modalReservation').removeClass("is-active");
 }
