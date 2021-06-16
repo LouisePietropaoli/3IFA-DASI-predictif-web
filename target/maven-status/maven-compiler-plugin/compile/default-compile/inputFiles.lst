@@ -26,11 +26,11 @@
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/Action.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/InitialisationAccueilClientSerialisation.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/ClientSerialisation.java
-/home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/DetailsProfilClientAvecProfilAstralSeralisation.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/DetailsProfilClientSeralisation.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/control/ActionServlet.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/DeconnecterAction.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/ListerMediumsAction.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/CreerCompteClientAction.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/action/InitialiserAccueilEmployeAction.java
+/home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/ConsultationSerialisation.java
 /home/talegre/NetBeansProjects/3IFA-DASI-predictif-web/src/main/java/serialisation/ListePredictionsSerialisation.java

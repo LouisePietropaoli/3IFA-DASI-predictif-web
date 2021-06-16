@@ -32,13 +32,13 @@ public class HistoriqueConsultationsClientAvecDispoSerialisation extends Seriali
         if (historiqueConsultation != null && dispos != null) {
              for (Consultation consultation : historiqueConsultation) {
                 JsonObject jsonConsultation = new JsonObject();
-                jsonConsultation.addProperty("id", consultation.getId());
+                jsonConsultation.addProperty("id", consultation.getId()); //TODO : Format hours
                 jsonConsultation.addProperty("dateDemande", consultation.getDateDemande().toString());
-                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut().toString());
-                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin().toString());
+                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut() != null ? consultation.getDateHeureDebut().toString() : null);
+                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin() != null ? consultation.getDateHeureFin().toString() : null);
                 jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
                 jsonConsultation.addProperty("dispo", dispos.get(consultation.getId()));
-                jsonConsultation.addProperty("type", recupererTypeMedium(consultation.getMedium()));
+                jsonConsultation.addProperty("typeMedium", recupererTypeMedium(consultation.getMedium()));
                 jsonConsultation.addProperty("idMedium", consultation.getMedium().getId());
                 jsonHistoriqueConsultation.add(jsonConsultation);
             }
