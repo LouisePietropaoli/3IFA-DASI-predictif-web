@@ -14,7 +14,6 @@ action/RecupererHistoriqueConsultationsClientAction.class
 util/Utility.class
 control/ActionServlet.class
 action/CommencerConsultationAction.class
-serialisation/DetailsProfilClientAvecProfilAstralSeralisation.class
 action/RecupererDetailsMediumAction.class
 action/TerminerConsultationAction.class
 serialisation/InitialisationAccueilEmployeSerialisation.class
