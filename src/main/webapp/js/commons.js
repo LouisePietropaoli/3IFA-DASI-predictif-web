@@ -27,7 +27,6 @@ function voirDetailsMedium(idMedium) {
     }
 
 function detailsMediumsHtml(medium) {
-    console.log("m", medium);
     html = `Désignation: ${medium.designation} <br/> 
             Genre: ${medium.genre} <br/>
             Type: ${medium.type}<br/>`;

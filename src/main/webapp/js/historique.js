@@ -30,10 +30,10 @@ $(document).ready(function () {
                             "style": "width: -moz-fit-content"
                         }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / " 
                                 + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " " 
-                                 + " " + response.historiqueConsultation[i].typeMedium + " " )
+                                 + " " + response.historiqueConsultation[i].typeMedium)
                                 .appendTo(div);
-                         var img = $("<img/>", {
-                            "onclick": "afficherDetailsMedium()",  //TODO : ID MEDIUM response.historiqueConsultation[i].idMedium 
+                         var img = $("<img/>", { 
+                            "onclick": "voirDetailsMedium(" + response.historiqueConsultation[i].idMedium + ");afficherDetails()",  
                             "class" : "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
@@ -71,3 +71,11 @@ $(document).ready(function () {
                 });
     });
 });
+
+function afficherDetails(){
+    var element = $('#modalDetails').addClass("is-active");
+}
+
+function cacheModale2(){
+    var element = $('#modalDetails').removeClass("is-active");
+}

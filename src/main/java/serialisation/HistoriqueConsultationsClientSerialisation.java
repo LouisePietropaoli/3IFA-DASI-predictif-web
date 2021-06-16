@@ -39,6 +39,7 @@ public class HistoriqueConsultationsClientSerialisation extends Serialisation {
                 jsonConsultation.addProperty("prenomEmploye", consultation.getEmploye().getPrenom());
                 jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
                 jsonConsultation.addProperty("typeMedium", recupererTypeMedium(consultation.getMedium()));
+                jsonConsultation.addProperty("idMedium", consultation.getMedium().getId());
                 jsonHistoriqueConsultation.add(jsonConsultation);
             }
             container.add("historiqueConsultation", jsonHistoriqueConsultation);

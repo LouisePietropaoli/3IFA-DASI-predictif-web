@@ -6,6 +6,7 @@
         <title>Accueil - Employé</title>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
         <script src="js/accueil-employe.js"></script>
+        <script src="js/commons.js"></script>
         <link rel="stylesheet" href="./css/menu.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     </head>
@@ -35,6 +36,21 @@
             </header>
             <section class="modal-card-body">
                 <ul id="historique"></ul>
+            </section>
+        </div>
+      </div>
+        
+                       <div id="modalDetails" class="modal">
+    <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Détails médium</p>
+                <button onClick="cacheModale2()" class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div id="modal-details-medium">
+    <div id="modal-details-medium-content"></div>
+</div>
             </section>
         </div>
       </div>

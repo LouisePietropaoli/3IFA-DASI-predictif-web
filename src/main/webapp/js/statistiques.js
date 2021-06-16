@@ -45,7 +45,7 @@ $(document).ready(function () {
                         }).text(response.classementMediums[i].name + " " + response.classementMediums[i].type + " " +response.classementMediums[i].nbConsultations)
                                 .appendTo(div);
                          var img = $("<img/>", {
-                            "onclick": "afficherDetailsMedium()",  //TODO : ID MEDIUM
+                            "onclick": "voirDetailsMedium(" + response.classementMediums[i].id + ");afficherDetails()",  
                             "class" : "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
@@ -77,3 +77,12 @@ $(document).ready(function () {
                 });
     });
 });
+
+
+function afficherDetails(){
+    var element = $('#modalDetails').addClass("is-active");
+}
+
+function cacheModale2(){
+    var element = $('#modalDetails').removeClass("is-active");
+}
