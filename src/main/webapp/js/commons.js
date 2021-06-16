@@ -86,12 +86,12 @@ function afficherListeMediums(mediums, afficheReserver = false) {
                 style="margin-left: 1em"/>
                 `;
         if (afficheReserver && valeurCourante.estDispo) {
-            accumulateur += `<button class="reserver"
+            accumulateur += `<button class="reserver" id="medium-${valeurCourante.id}"
                         onClick="reserverMedium(${valeurCourante.id});afficherReservation()" >
                          <span>Réserver</span>
                        </button>`;
         } else if (afficheReserver) {
-            accumulateur += `<button class="reserver" disabled >
+            accumulateur += `<button class="reserver"  id="medium-${valeurCourante.id}" disabled >
                          Réserver
                        </button>`;
         }
@@ -107,18 +107,20 @@ function reserverMedium(idMedium) {
                             vous enverra ses coordonnées 
                             pour que vous puissez le contacter.`;
     const MESAGE_ERREUR = `Le médium choisi a été réservé entre temps. <br/>
-                            Votre réservation n'a paspu être prise en compte. Nous vous prions de
+                            Votre réservation n'a pas pu être prise en compte. Nous vous prions de
                              nous excuser.`;
     $.ajax({
         url: './ActionServlet',
         type: 'POST',
         data: {
             todo: 'reserver-medium',
-            mediumId: idMedium
+            idMedium: 26
         },
         dataType: 'json'
     })
             .done(function (response) {
+                console.log(response);
+
                 if (!response.erreur) {
                     $('#modal-reservation-content').html(MESSAGE_SUCCES);
                 } else {
@@ -128,5 +130,8 @@ function reserverMedium(idMedium) {
             .fail(function (error) {
             })
             .always(function () {
+                $(`#medium-${idMedium}`).prop("disabled", true);
+                //suppression de la balise <a>
+                $(`#medium-${idMedium}`).html("Réserver");
             });
 }

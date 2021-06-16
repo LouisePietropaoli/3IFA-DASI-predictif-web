@@ -20,17 +20,17 @@ public class ReserverMediumAction extends Action {
 
         HttpSession session = request.getSession();
         Client client = (Client) session.getAttribute("client");
-        Long mediumId = (Long) request.getAttribute("mediumId");
-        Medium medium = service.rechercherMediumParId(mediumId);
+        String idMedium = request.getParameter("idMedium");
+        Medium medium = service.rechercherMediumParId(Long.parseLong(idMedium));
 
         if (medium != null) {
-            try {
                 Consultation consultation = service.reserverMediumParClient(client, medium);
-            } catch (AucunEmployeDisponibleException e) {
+            if (consultation == null) {
                 request.setAttribute("erreur", true);
             }
         } else {
             request.setAttribute("erreur", true);
+
         }
 
     }

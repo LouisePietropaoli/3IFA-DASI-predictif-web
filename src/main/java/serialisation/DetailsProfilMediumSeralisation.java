@@ -30,7 +30,7 @@ public class DetailsProfilMediumSeralisation extends Serialisation {
             jsonMedium.addProperty("presentation", medium.getPresentation());
             container.add("medium", jsonMedium);
         } else {
-            container.addProperty("erreur", true);
+            container.addProperty("erreur", true); 
         }
 
         PrintWriter out = this.getWriter(response);

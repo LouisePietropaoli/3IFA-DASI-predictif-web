@@ -48,6 +48,13 @@ public class InitialisationAccueilClientSerialisation extends Serialisation {
                 jsonListeMediums.add(jsonMedium);
             }
             container.add("mediums", jsonListeMediums);
+            JsonObject jsonClientProfilAstral = new JsonObject();
+            jsonClientProfilAstral.addProperty("signeZodiaque", client.getSigneZodiaque());
+            jsonClientProfilAstral.addProperty("signeAstro", client.getSigneAstroChinois());
+            jsonClientProfilAstral.addProperty("couleur", client.getCouleurPorteBonheur());
+            jsonClientProfilAstral.addProperty("animalTotem", client.getAnimalTotem());
+            container.add("client", jsonClientProfilAstral);
+
         } else {
             container.addProperty("erreur", true);
         }
