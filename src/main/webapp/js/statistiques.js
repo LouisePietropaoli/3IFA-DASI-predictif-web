@@ -33,10 +33,23 @@ $(document).ready(function () {
                     $.each(response.classementMediums, function(i)
                     {
                         var li = $('<li/>')
-                            .appendTo(cList);
-                        var aaa = $('<a/>')
-                            .text(response.classementMediums[i].name + " " + response.classementMediums[i].type + " " +response.classementMediums[i].nbConsultations)
-                            .appendTo(li);
+                                .appendTo(cList);
+
+                        var div = $("<div/>", {
+                            "style": "display: flex; align-items: center", 
+                        }).appendTo(li);
+
+                        var p = $("<p/>", {
+                            "class": "texte",
+                            "style": "width: -moz-fit-content"
+                        }).text(response.classementMediums[i].name + " " + response.classementMediums[i].type + " " +response.classementMediums[i].nbConsultations)
+                                .appendTo(div);
+                         var img = $("<img/>", {
+                            "onclick": "afficherDetailsMedium()",  //TODO : ID MEDIUM
+                            "class" : "image is-16x16",
+                            "src": "./img/loupe.png",
+                            "style": "margin-left: 1em"
+                        }).appendTo(div);
                     });
                 }
                 )
