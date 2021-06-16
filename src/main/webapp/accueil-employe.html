@@ -26,6 +26,19 @@
             </div>
         </div>
         
+        <div id="modalHisto" class="modal">
+    <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Historique</p>
+                <button onClick="cacheModale()" class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <ul id="historique"></ul>
+            </section>
+        </div>
+      </div>
+        
         <div class="contenu">
             <div id="aucune_consultation" class='box'>
                 <p class="title is-3">Pas de consultation en cours</p>
@@ -77,7 +90,7 @@
                 <p id="couleur_porte_bonheur" class="texte">Sa couleur porte-bonheur : </p>
                 <p id="animal_totem" class="texte">Son animal totem : </p>
                 <div class="has-text-centered">
-                <button id="button_historique" class="button is-medium" onclick="afficherHistoriqueCConsultation()">Afficher l'historique des consultations</button>
+                <button id="button_historique" class="button is-medium" onclick="afficherHistoriqueConsultation()">Afficher l'historique des consultations</button>
                 </div>
             </div>
 
