@@ -33,8 +33,8 @@ public class HistoriqueConsultationsClientSerialisation extends Serialisation {
                 jsonConsultation.addProperty("id", consultation.getId());
                 jsonConsultation.addProperty("commentaire", consultation.getCommentaire());
                 jsonConsultation.addProperty("dateDemande", consultation.getDateDemande().toString());
-                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut().toString());
-                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin().toString());
+                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut() != null ? consultation.getDateHeureDebut().toString() : null);
+                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin() != null ? consultation.getDateHeureFin().toString() : null);
                 jsonConsultation.addProperty("nomEmploye", consultation.getEmploye().getNom());
                 jsonConsultation.addProperty("prenomEmploye", consultation.getEmploye().getPrenom());
                 jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
