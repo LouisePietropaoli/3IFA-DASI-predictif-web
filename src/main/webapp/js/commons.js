@@ -53,13 +53,13 @@ function afficherListeMediums(mediums, afficheReserver = false) {
         }
         accumulateur += ` <p class="texte" style="width: -moz-fit-content; font-size: 1.3em;"> ${valeurCourante.designation} | 
                         ${valeurCourante.type}     </p>
-                        <a href="#modal-details-medium"><img onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" class="image is-16x16" src="./img/loupe.png" 
+                        <img onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" class="image is-16x16" src="./img/loupe.png" 
                          style="margin-left: 1em"/></a>`;
 
         if (afficheReserver && valeurCourante.estDispo) {
             accumulateur += `<button class="reserver"
                         onClick="reserverMedium(${valeurCourante.id});afficherReservation()" >
-                         <a href="#modal-details-medium">Réserver</a>
+                         <span>Réserver</span>
                        </button>`;
         } else if (afficheReserver) {
             accumulateur += `<button class="reserver" disabled >
@@ -82,13 +82,13 @@ function afficherListeMediums(mediums, afficheReserver = false) {
                 ${valeurCourante.genre} | ${valeurCourante.designation} | 
                 ${valeurCourante.type}<br/>
                 ${valeurCourante.presentation}
-                <button class="icone-loupe" onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" >
-                <a href="#modal-details-medium">Voir détails</a>
-                </button>`;
+                <img class="icone-loupe" onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" class="image is-16x16" src="./img/loupe.png" 
+                style="margin-left: 1em"/>
+                `;
         if (afficheReserver && valeurCourante.estDispo) {
             accumulateur += `<button class="reserver"
                         onClick="reserverMedium(${valeurCourante.id});afficherReservation()" >
-                         <a href="#modal-details-medium">Réserver</a>
+                         <span>Réserver</span>
                        </button>`;
         } else if (afficheReserver) {
             accumulateur += `<button class="reserver" disabled >

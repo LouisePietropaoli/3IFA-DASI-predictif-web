@@ -65,8 +65,8 @@ function afficherListeMediums() {
                     }
                     accumulateur += ` <p class="texte" style="width: -moz-fit-content; font-size: 1.3em;"> ${valeurCourante.designation} | 
                         ${valeurCourante.type}     </p>
-                        <a href="#modal-details-medium" rel="modal:open"><img onClick="voirDetailsMedium(${valeurCourante.id})" class="image is-16x16" src="./img/loupe.png" 
-                         style="margin-left: 1em"/></a></div>
+                        <img  class="image is-16x16" onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" src="./img/loupe.png" 
+                         style="margin-left: 1em"/></div>
                         <p class="texte">&#10077; ${valeurCourante.presentation} ❞</p>
                         </li></div>`;
                 return accumulateur;
