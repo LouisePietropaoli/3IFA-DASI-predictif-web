@@ -27,7 +27,6 @@ public class InitialiserAccueilClientAction extends Action {
             for (Medium m : mediums) {
                 mediumsDispo.put(m.getId(), service.getDisponibilite(m));
                 request.setAttribute("mediumsDispo", mediumsDispo);
-
             }
         } else {
             request.setAttribute("mediums", null);
