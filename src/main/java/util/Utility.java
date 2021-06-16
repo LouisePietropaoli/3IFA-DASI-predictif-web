@@ -28,7 +28,6 @@ public class Utility {
     public static JsonObject recupererJsonMediumSelonType(Medium medium) {
         JsonObject jsonMedium = new JsonObject();
         String type = recupererTypeMedium(medium);
-        jsonMedium.addProperty("id", medium.getId());
         jsonMedium.addProperty("designation", medium.getDesignation());
         jsonMedium.addProperty("genre", recupererGenreMedium(medium));
         jsonMedium.addProperty("presentation", medium.getPresentation());

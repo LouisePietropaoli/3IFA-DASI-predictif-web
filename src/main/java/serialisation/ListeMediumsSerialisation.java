@@ -35,7 +35,7 @@ public class ListeMediumsSerialisation extends Serialisation {
                 JsonObject jsonMedium = new JsonObject();
                 jsonMedium.addProperty("id", medium.getId());
                 jsonMedium.addProperty("genre", Utility.recupererGenreMedium(medium));
-                jsonMedium.addProperty("designation", medium.getId());
+                jsonMedium.addProperty("designation", medium.getDesignation());
                 jsonMedium.addProperty("type", Utility.recupererTypeMedium(medium));
                 jsonMedium.addProperty("presentation", medium.getPresentation());
                 

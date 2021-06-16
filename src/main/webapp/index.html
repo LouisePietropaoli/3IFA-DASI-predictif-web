@@ -5,6 +5,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bienvenue sur Predict'IF</title>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- Librairie Javascript: jQuery (v3.4.1) -->
+
+        <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        
         <script src="js/index.js"></script>
         <link rel="stylesheet" href="./css/menu.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
@@ -39,14 +44,14 @@
             </div>
             
             <div class='box'>
-                <p class="title is-3">Découvre nos médiums</p>
+                <p class="title is-3">Découvrez nos médiums</p>
                 <div>
                     <ul id="liste-mediums"></ul>
                 </div>
             </div>
             
             <div class='box'>
-                <p class="title is-3">Rencontre-les sur notre site !</p>
+                <p class="title is-3">Rencontrez-les sur notre site !</p>
                 
                 <div class="has-text-centered" style="margin-bottom: 1em">
                     <button class="button is-medium"><a href="connexion.html?mode=client">Se connecter</a></button>
@@ -62,3 +67,7 @@
         l'utilisateur clique sur l'icône loupe-->
     </body>
 </html>
+
+<div id="modal-details-medium">
+    <div id="modal-details-medium-content"></div>
+</div>

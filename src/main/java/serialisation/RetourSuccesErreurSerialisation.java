@@ -14,14 +14,7 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
-        boolean erreur;
-        try {
-            erreur = (boolean)request.getAttribute("erreur");
-        } catch (NullPointerException e) {
-           erreur = false;
-        }
-        container.addProperty("erreur", erreur);
-        container.addProperty("todo", true);
+        container.addProperty("erreur", (String) request.getAttribute("erreur"));
 
 
         PrintWriter out = this.getWriter(response);

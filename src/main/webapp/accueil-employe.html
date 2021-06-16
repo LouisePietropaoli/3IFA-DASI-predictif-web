@@ -41,7 +41,7 @@
                          style="margin-left: 1em"/>
                 </div>
                 <div class="has-text-centered">
-                    <button class="button is-medium" onclick="commencerConsultation()">Commencer la consultation</button>
+                    <button class="button is-medium" id="commencer_consultation">Commencer la consultation</button>
                 </div>
             </div>
 
@@ -50,13 +50,14 @@
                 <p id="heure_debut" class="texte">Heure de début : </p>
                 <p id="nom_client2" class="texte">Client : </p>
                 <div style="display: flex; align-items: center">
-                    <p id="medium" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
+                    <p id="medium2" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
                     <img onclick="afficherDetailsMedium()" class="image is-16x16" src="./img/loupe.png" 
                          style="margin-left: 1em"/>
-                </div>                <p class="texte">Commentaire</p>
-                <textarea></textarea>
+                </div>
+                <p class="texte">Commentaire</p>
+                <textarea id="commentaire"></textarea>
                 <div class="has-text-centered">
-                    <button class="button is-medium" onclick="commencerConsultation()">Terminer la consultation</button>
+                    <button class="button is-medium" id="terminer_consultation">Terminer la consultation</button>
                 </div>
             </div>
 
@@ -76,17 +77,20 @@
                 <p id="couleur_porte_bonheur" class="texte">Sa couleur porte-bonheur : </p>
                 <p id="animal_totem" class="texte">Son animal totem : </p>
                 <div class="has-text-centered">
-                <button id="button_historique" class="button" onclick="afficherHistoriqueCConsultation()">Afficher l'historique des consultations</button>
+                <button id="button_historique" class="button is-medium" onclick="afficherHistoriqueCConsultation()">Afficher l'historique des consultations</button>
                 </div>
             </div>
 
             <div id="predictions" class='box'>
                 <p class="title is-3">Prédictions</p>
                 <p class="texte">Amour : </p><input type='number' id='amour' name='amour' min="1" max="4" value="1" />
+                <p class="texte" id="amour_res"></p>
                 <p class="texte">Santé : </p><input type='number' id='sante' name='sante'  min="1" max="4" value="1" />
+                <p class="texte" id="sante_res"></p>
                 <p class="texte">Travail : </p><input type='number' id='travail' name='travail'  min="1" max="4" value="1" />
+                <p class="texte" id="travail_res"></p>
                 <div class="has-text-centered">
-                    <button id="button_prediction" class="button is-medium" onclick="demanderPrediction()">Demander une prédiction</button>
+                    <button id="demande_prediction" class="button is-medium">Demander une prédiction</button>
                 </div>
             </div>
         </div>
