@@ -1,4 +1,22 @@
 $(document).ready(function () {
+    $.ajax({
+        url: './ActionServlet',
+        type: 'POST',
+        data: {
+            todo: 'initialser-accueil-client'
+        },
+        dataType: 'json'
+    })
+    .done(function (response) {
+        if (!response.erreur) {
+            $("#liste-mediums").html(afficherListeMediums(response.mediums, true));
+        } else {
+        }
+    })
+    .fail(function (error) {
+    })
+    .always(function () {
+    });
     $('#bouton-deconnexion').on('click', function () {
         $.ajax({
             url: './ActionServlet',

@@ -22,6 +22,7 @@ serialisation/InitialisationAccueilEmployeSerialisation.class
 serialisation/DetailsProfilMediumSeralisation.class
 serialisation/ClientSerialisation.class
 action/RecupererDetailsProfilClientAction.class
+.netbeans_automatic_build
 action/DeconnecterAction.class
 action/ListerMediumsAction.class
 action/ReserverMediumAction.class
