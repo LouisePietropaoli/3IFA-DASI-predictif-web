@@ -35,7 +35,7 @@ $(document).ready(function () {
                     var position = 1;
                     $.each(response.classementMediums, function(i)
                     {
-                        valuesStats.push({y: response.classementMediums[i].nbConsultations });
+                        valuesStats.push({label: response.classementMediums[i].name, y: response.classementMediums[i].nbConsultations });
                         var div1 = $('<div>', {
                             "class": "box", 
                         })
@@ -73,11 +73,11 @@ $(document).ready(function () {
                                 var options1 = {
                    animationEnabled: true,
                    title: {
-                           text: "Statistiques de consultations"
+                           text: "Nombre de consultations par employé"
                    },
                    data: [{
                            type: "column", 
-                           showInLegend: true,
+                           
                            dataPoints: valuesStats
                            }]
            };
