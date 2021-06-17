@@ -42,7 +42,7 @@ function detailsMediumsHtml(medium) {
 }
 
 function afficherListeMediums(mediums, afficheReserver = false) {
-    const htmlMediumsListe = response.mediums.reduce(
+    const htmlMediumsListe = mediums.reduce(
             (accumulateur, valeurCourante) => {
         console.log(valeurCourante);
         accumulateur += `<div class='box'><li class="carte-medium"><div style="display: flex; align-items: center">`;
@@ -69,33 +69,6 @@ function afficherListeMediums(mediums, afficheReserver = false) {
         accumulateur += `</div>
                         <p class="texte">&#10077; ${valeurCourante.presentation} ❞</p>
                         </li></div>`;
-        return accumulateur;
-    }, "");
-
-    return htmlMediumsListe;
-}
-
-function afficherListeMediums(mediums, afficheReserver = false) {
-    const htmlMediumsListe = mediums.reduce(
-            (accumulateur, valeurCourante) => {
-        accumulateur += `<li class="carte-medium">
-                ${valeurCourante.genre} | ${valeurCourante.designation} | 
-                ${valeurCourante.type}<br/>
-                ${valeurCourante.presentation}
-                <img class="icone-loupe" onClick="voirDetailsMedium(${valeurCourante.id});afficherDetails()" class="image is-16x16" src="./img/loupe.png" 
-                style="margin-left: 1em"/>
-                `;
-        if (afficheReserver && valeurCourante.estDispo) {
-            accumulateur += `<button class="reserver" id="medium-${valeurCourante.id}"
-                        onClick="reserverMedium(${valeurCourante.id});afficherReservation()" >
-                         <span>Réserver</span>
-                       </button>`;
-        } else if (afficheReserver) {
-            accumulateur += `<button class="reserver"  id="medium-${valeurCourante.id}" disabled >
-                         Réserver
-                       </button>`;
-        }
-        accumulateur += `</li><br/>`;
         return accumulateur;
     }, "");
 
