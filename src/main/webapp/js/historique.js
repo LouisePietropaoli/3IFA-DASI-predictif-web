@@ -12,9 +12,7 @@ $(document).ready(function () {
                     console.log(response);
             var cList = $('#historique');
             if(response.historiqueConsultation.length == 0){
-                var li = $('<li/>')
-                            .appendTo(cList);
-                var aaa = $('<div/>').text("Votre historique est vide"); 
+                $('#titre-historique').text('Votre historique est vide.'); 
             }
                     $.each(response.historiqueConsultation, function(i)
                     {
