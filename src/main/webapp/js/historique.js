@@ -10,37 +10,39 @@ $(document).ready(function () {
             .done(function (response) {
                 if (!response.erreur) {
                     console.log(response);
-            var cList = $('#historique');
-            if(response.historiqueConsultation.length == 0){
-                $('#titre-historique').text('Votre historique est vide.'); 
-            }
-                    $.each(response.historiqueConsultation, function(i)
+                    var cList = $('#historique');
+                    if (response.historiqueConsultation.length == 0) {
+                        $('#titre-historique').text('Votre historique est vide.');
+                    }
+                    $.each(response.historiqueConsultation, function (i)
                     {
                         var li = $('<li/>')
-                            .appendTo(cList);
-                    
+                                .appendTo(cList);
+
                         var div = $("<div/>", {
-                            "class" : "box", 
+                            "class": "box",
                         }).appendTo(li);
 
                         var p = $("<p/>", {
                             "class": "texte",
                             "style": "width: -moz-fit-content"
-                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / " 
-                                + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " " 
-                                 + " " + response.historiqueConsultation[i].typeMedium)
+                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / "
+                                + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " "
+                                + " " + response.historiqueConsultation[i].typeMedium)
                                 .appendTo(div);
-                         var img = $("<img/>", { 
-                            "onclick": "voirDetailsMedium(" + response.historiqueConsultation[i].idMedium + ");afficherDetails()",  
-                            "class" : "image is-16x16",
+                        var img = $("<img/>", {
+                            "onclick": "voirDetailsMedium(" + response.historiqueConsultation[i].idMedium + ");afficherDetails()",
+                            "class": "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
                         }).appendTo(div);
-                        
+
                         var button = $("<button/>", {
-                            "class" : "button", 
-                        }).click(function(){if(!response.historiqueConsultation[i].dispo){reserverMedium(response.historiqueConsultation[i].idMedium); afficherReservation(); }}).prop("disabled", !response.historiqueConsultation[i].dispo).appendTo(div);
-                        
+                            "class": "button",
+                            "onclick": "declencherReserverMedium(" + response.historiqueConsultation[i].dispo + ", " + response.historiqueConsultation[i].idMedium + ")"
+                        }).prop("disabled", !response.historiqueConsultation[i].dispo)
+                                .appendTo(div);
+
                         var span = $("<span/>", {}).text("Réserver").appendTo(button);
                     });
                 } else {
@@ -50,38 +52,29 @@ $(document).ready(function () {
             })
             .always(function () {
             });
-    $('#bouton-deconnexion').on('click', function () {
-        $.ajax({
-            url: './ActionServlet',
-            type: 'POST',
-            data: {
-                todo: 'deconnecter'
-            },
-            dataType: 'json'
-        })
-                .done(function () {
-                    window.location = `index.html`;
-                }
-                )
-                .fail(function () { // Appel KO => erreur technique à gérer
-                })
-                .always(function () { // facultatif: appelé après le .done() ou le .fail()
-                });
-    });
+    $('#bouton-deconnexion').on('click', () => deconnecter());
+
 });
 
-function afficherDetails(){
+function afficherDetails() {
     var element = $('#modalDetails').addClass("is-active");
 }
 
-function cacheModale2(){
+function cacheModale2() {
     var element = $('#modalDetails').removeClass("is-active");
 }
 
-function afficherReservation(){
+function afficherReservation() {
     var element = $('#modalReservation').addClass("is-active");
 }
 
-function cacheModale3(){
+function cacheModale3() {
     var element = $('#modalReservation').removeClass("is-active");
+}
+
+function declencherReserverMedium(dispo, idMedium) {
+    if (dispo) {
+        reserverMedium(idMedium);
+        afficherReservation();
+    }
 }

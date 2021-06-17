@@ -27,7 +27,7 @@ $(document).ready(function () {
                             const redirection = mode === "client" ? "client" : "employe";
                             window.location = `accueil-${redirection}.html`;
                         },
-                                2500); // délai de 2.5s
+                                1500); // délai de 1.5s
                     } else {
                         $('#ligne-message').html('ERREUR: identifiant / mot de passe incorrects');
                     }
