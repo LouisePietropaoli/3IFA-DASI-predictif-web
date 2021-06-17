@@ -64,10 +64,10 @@
                 <p class="title is-3">Demande de consultation</p>
                 <p id="heure_demande" class="texte">Heure de la demande : </p>
                 <p id="nom_client" class="texte">Client : </p>
-                <div style="display: flex; align-items: center">
+                <div style="display: flex; align-items: center" id="medium-div">
                     <p id="medium" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
-                    <img onclick="afficherDetailsMedium()" class="image is-16x16" src="./img/loupe.png" 
-                         style="margin-left: 1em"/>
+                   <!-- <img id="img-medium" onclick="afficherDetailsMedium(this.dataset.medium-id)" class="image is-16x16" src="./img/loupe.png" 
+                         style="margin-left: 1em"/>-->
                 </div>
                 <div class="has-text-centered">
                     <button class="button is-medium" id="commencer_consultation">Commencer la consultation</button>
@@ -78,10 +78,10 @@
                 <p class="title is-3">En consultation</p>
                 <p id="heure_debut" class="texte">Heure de début : </p>
                 <p id="nom_client2" class="texte">Client : </p>
-                <div style="display: flex; align-items: center">
+                <div style="display: flex; align-items: center" id="medium-2-div">
                     <p id="medium2" class="texte" style="width: -moz-fit-content">Medium incarné : </p>
-                    <img onclick="afficherDetailsMedium()" class="image is-16x16" src="./img/loupe.png" 
-                         style="margin-left: 1em"/>
+                    <!--<img id="img-medium2" onclick="afficherDetailsMedium(this.dataset.id)" class="image is-16x16" src="./img/loupe.png" 
+                         style="margin-left: 1em"/>-->
                 </div>
                 <p class="texte">Commentaire</p>
                 <textarea id="commentaire"></textarea>
