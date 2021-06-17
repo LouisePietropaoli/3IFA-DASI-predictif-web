@@ -17,6 +17,10 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
         JsonObject container = new JsonObject();
         container.addProperty("erreur", (Boolean) request.getAttribute("erreur"));
 
+        /**
+         * temporaire - uniquement pour vérifier qu'une demande de consultation
+         * par un client permet bien de prendre un employé du même sexe.
+         */
         Employe employeResa = (Employe) request.getAttribute("employeResa");
         if (employeResa != null) {
             JsonObject jsonEmployeResa = new JsonObject();
