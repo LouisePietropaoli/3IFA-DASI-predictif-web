@@ -57,12 +57,12 @@ function afficherListeMediums(mediums, afficheReserver = false) {
                          style="margin-left: 1em"/></a>`;
 
         if (afficheReserver && valeurCourante.estDispo) {
-            accumulateur += `<button class="reserver"
+            accumulateur += `<button id="medium-${valeurCourante.id}" class="button is-small" style="margin-left: 1em"
                         onClick="reserverMedium(${valeurCourante.id});afficherReservation()" >
                          <span>Réserver</span>
                        </button>`;
         } else if (afficheReserver) {
-            accumulateur += `<button class="reserver" disabled >
+            accumulateur += `<button id="medium-${valeurCourante.id}" class="button is-small" style="margin-left: 1em" disabled >
                          Réserver
                        </button>`;
         }

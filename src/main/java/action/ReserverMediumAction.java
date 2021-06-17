@@ -24,15 +24,14 @@ public class ReserverMediumAction extends Action {
         Medium medium = service.rechercherMediumParId(Long.parseLong(idMedium));
 
         if (medium != null) {
+            try {
                 Consultation consultation = service.reserverMediumParClient(client, medium);
-            if (consultation == null) {
+            } catch (AucunEmployeDisponibleException e) {
                 request.setAttribute("erreur", true);
             }
         } else {
             request.setAttribute("erreur", true);
-
         }
 
     }
-
 }
