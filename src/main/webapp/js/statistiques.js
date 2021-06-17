@@ -28,11 +28,14 @@ $(document).ready(function () {
             dataType: 'json'
         })
                 .done(function (response) {
+                    var valuesStats = [];
+                    
                     console.log(response);
                     var cList = $('#mediumlist');
                     var position = 1;
                     $.each(response.classementMediums, function(i)
                     {
+                        valuesStats.push({y: response.classementMediums[i].nbConsultations });
                         var div1 = $('<div>', {
                             "class": "box", 
                         })
@@ -66,6 +69,29 @@ $(document).ready(function () {
                         
                         position++;
                     });
+                    
+                                var options1 = {
+                   animationEnabled: true,
+                   title: {
+                           text: "Statistiques de consultations"
+                   },
+                   data: [{
+                           type: "column", 
+                           showInLegend: true,
+                           dataPoints: valuesStats
+                           }]
+           };
+
+           $("#resizable").resizable({
+                   create: function (event, ui) {
+                           //Create chart.
+                           $("#chartContainer1").CanvasJSChart(options1);
+                   },
+                   resize: function (event, ui) {
+                           //Update chart size according to its container size.
+                           $("#chartContainer1").CanvasJSChart().render();
+                   }
+           });
                 }
                 )
                 .fail(function () { // Appel KO => erreur technique à gérer
