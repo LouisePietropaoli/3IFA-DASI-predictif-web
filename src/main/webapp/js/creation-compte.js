@@ -26,7 +26,7 @@ function validerFormulaire() {
 
 function creerCompte() {
     const MESSAGE_SUCCES = `Votre compte a bien été créé. Rendez-vous vite sur votre espace client
-pour résrver votre première consultation ! <br/>`;
+pour réserver votre première consultation ! <br/>`;
     const MESAGE_ERREUR = `La création de votre compte a échoué.<br/>
                             Nous vous prions de nous excuser.`;
     $.ajax({
