@@ -61,206 +61,213 @@ public class ActionServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        request.setCharacterEncoding("UTF-8");
-        String todo = request.getParameter("todo");
+        try {
+            HttpSession session = request.getSession(true);
+            request.setCharacterEncoding("UTF-8");
+            String todo = request.getParameter("todo");
 
-        Action action = null;
-        Serialisation serialisation = null;
+            Action action = null;
+            Serialisation serialisation = null;
 
-        /**
-         *********************************************************************
-         * Vérification si le todo nécessite d'être authentifié
-         * ********************************************************************
-         */
-        if (!TO_DO_SANS_AUTHENTIFICATION.contains(todo)) {
-            //authentification nécessaire
-            // Vérification de la session
-            Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
-            if (userAuthentified == null) {
-                response.sendError(403, "Accès interdit.");
-                return;
-            }
-        }
-
-        switch (todo) {
             /**
-             * ********************************************************************
-             * ACTIONS SANS AUTHENTIFICATION
+             *********************************************************************
+             * Vérification si le todo nécessite d'être authentifié
              * ********************************************************************
              */
-            case "lister-mediums": {
-                action = new ListerMediumsAction();
-                serialisation = new ListeMediumsSerialisation();
+            if (!TO_DO_SANS_AUTHENTIFICATION.contains(todo)) {
+                //authentification nécessaire
+                // Vérification de la session
+                Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
+                if (userAuthentified == null) {
+                    response.sendError(403, "Accès interdit.");
+                    return;
+                }
             }
-            break;
-            case "connecter": {
-                action = new AuthentifierAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-            case "recuperer-details-medium": {
+
+            switch (todo) {
                 /**
-                 * utilisé pour afficher les détails d'un médiums et sa
-                 * disponbilité dans les modales renvoie le medium avec sa
-                 * description détaillée
+                 * ********************************************************************
+                 * ACTIONS SANS AUTHENTIFICATION
+                 * ********************************************************************
                  */
-                action = new RecupererDetailsMediumAction();
-                serialisation = new DetailsProfilMediumSeralisation();
-            }
-            break;
-            case "creer-compte-client": {
-                /**
-                 * utilisé pour la création d'un compte client pour ensuite
-                 * afficher la modale si la création a eu lieu ou signifier une
-                 * erreur sinon renvoie un attribut d'erreur à vrai si la
-                 * création a eu lieu
-                 */
-                action = new CreerCompteClientAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-
-            /**
-             * ********************************************************************
-             * ACTIONS AVEC AUTHENTIFICATION
-             * ********************************************************************
-             *
-             */
-            case "deconnecter": {
-                action = new DeconnecterAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-            /**
-             * utilisé pour l'initalisation de la page d'accueil client
-             * authentifié renvoie la liste de médiums avec dispo et le profil
-             * astral du client authentifié
-             */
-            case "initialiser-accueil-client": {
-                action = new InitialiserAccueilClientAction();
-                serialisation = new InitialisationAccueilClientSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour réserver un médium sur la page de listing des
-             * mediums avec dispo et pour afficher la modale de confirmation ou
-             * d'erreur de création de la consultation renvoie un attribut
-             * erreur à vrai si la consutlation n'a pas été créée
-             */
-            case "reserver-medium": {
-                action = new ReserverMediumAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour l'initialisation de la page de profil client quand
-             * un client est authentifié renvoie le client authentifié avec ses
-             * détails (sans ses consultations)
-             */
-            case "recuperer-details-profil-client": {
-                action = new RecupererDetailsProfilClientAction();
-                serialisation = new DetailsProfilClientSeralisation();
-            }
-            break;
-
-            /**
-             * utilisé pour l'initalisation de la page d'historique de
-             * consultations client renvoie les consultations du client
-             * authentifié avec la disponibilité du médium pour chaque
-             * consultation passée
-             */
-            case "recuperer-historique-consultations-client-avec-dispo": {
-                action = new RecupererHistoriqueConsultationsClientAvecDispoAction();
-                serialisation = new HistoriqueConsultationsClientAvecDispoSerialisation();
-            }
-            break;
-            /**
-             * utilisé pour afficher l'historique des consultations d'un du
-             * client relié à l'employé authentifié renvoie l'historique des
-             * consultations du client sans les dispo des médiums associés
-             */
-            case "recuperer-historique-consultations-fiche-client": {
-                action = new RecupererHistoriqueConsultationsClientAction();
-                serialisation = new HistoriqueConsultationsClientSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour l'initalisation de la page d'accueil employé
-             * authentifié renvoie la consultation reliée à ce medium avec son
-             * statut si une consultation est associée au médium, renvoie toutes
-             * les infos du client (dont profil astral) sauf son mot de passe
-             * L'historique client n'est pas renvoyé
-             */
-            case "initialiser-accueil-employe": {
-                action = new InitialiserAccueilEmployeAction();
-                serialisation = new InitialisationAccueilEmployeSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour récupérer et afficher des prédictions Renvoie les
-             * trois prédictions (amour, santé, travail)
-             */
-            case "demander-predictions": {
-                action = new DemanderPredictionsAction();
-                serialisation = new ListePredictionsSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour commencer la consultation de l'employé authentifié
-             * et changer le bouton en "terminer la conusltation" renvoie vraie
-             * si la consultation a bien été démarrée, faux sinon
-             */
-            case "commencer-consultation": {
-                action = new CommencerConsultationAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour terminer une consultation avec saisie facultative de
-             * commentaire et ne plus afficher la consultation si elle s'est
-             * bien terminée renvoie vraie si la consultation a bien été
-             * terminée, faux sinon
-             */
-            case "terminer-consultation": {
-                action = new TerminerConsultationAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
-
-            /**
-             * utilisé pour l'initalisation de la page des statistiques d'un
-             * employé authentifié renvoie le nombre de consultations, le nombre
-             * de clients et le pourcentage de la clientèle totale de l'employé
-             */
-            case "recuperer-statistiques": {
-                action = new RecupererStatistiquesEmployeAction();
-                serialisation = new StatistiquesEmployeSerialisation();
-            }
-            break;
-            /**
-             * utilisé pour l'initalisation de la page des statistiques d'un
-             * employé authentifié renvoie le nombre de consultations, le nombre
-             * de clients et le pourcentage de la clientèle totale de l'employé
-             */
-            case "recuperer-classement-medium": {
-                action = new RecupererClassementMedium();
-                serialisation = new ClassementMediumSerialisation();
-            }
-            break;
-            default:
+                case "lister-mediums": {
+                    action = new ListerMediumsAction();
+                    serialisation = new ListeMediumsSerialisation();
+                }
                 break;
-        }
+                case "connecter": {
+                    action = new AuthentifierAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
+                case "recuperer-details-medium": {
+                    /**
+                     * utilisé pour afficher les détails d'un médiums et sa
+                     * disponbilité dans les modales renvoie le medium avec sa
+                     * description détaillée
+                     */
+                    action = new RecupererDetailsMediumAction();
+                    serialisation = new DetailsProfilMediumSeralisation();
+                }
+                break;
+                case "creer-compte-client": {
+                    /**
+                     * utilisé pour la création d'un compte client pour ensuite
+                     * afficher la modale si la création a eu lieu ou signifier
+                     * une erreur sinon renvoie un attribut d'erreur à vrai si
+                     * la création a eu lieu
+                     */
+                    action = new CreerCompteClientAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
 
-        if (action != null && serialisation != null) {
-            action.executer(request);
-            serialisation.serialiser(request, response);
+                /**
+                 * ********************************************************************
+                 * ACTIONS AVEC AUTHENTIFICATION
+                 * ********************************************************************
+                 *
+                 */
+                case "deconnecter": {
+                    action = new DeconnecterAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
+                /**
+                 * utilisé pour l'initalisation de la page d'accueil client
+                 * authentifié renvoie la liste de médiums avec dispo et le
+                 * profil astral du client authentifié
+                 */
+                case "initialiser-accueil-client": {
+                    action = new InitialiserAccueilClientAction();
+                    serialisation = new InitialisationAccueilClientSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour réserver un médium sur la page de listing des
+                 * mediums avec dispo et pour afficher la modale de confirmation
+                 * ou d'erreur de création de la consultation renvoie un
+                 * attribut erreur à vrai si la consutlation n'a pas été créée
+                 */
+                case "reserver-medium": {
+                    action = new ReserverMediumAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour l'initialisation de la page de profil client
+                 * quand un client est authentifié renvoie le client authentifié
+                 * avec ses détails (sans ses consultations)
+                 */
+                case "recuperer-details-profil-client": {
+                    action = new RecupererDetailsProfilClientAction();
+                    serialisation = new DetailsProfilClientSeralisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour l'initalisation de la page d'historique de
+                 * consultations client renvoie les consultations du client
+                 * authentifié avec la disponibilité du médium pour chaque
+                 * consultation passée
+                 */
+                case "recuperer-historique-consultations-client-avec-dispo": {
+                    action = new RecupererHistoriqueConsultationsClientAvecDispoAction();
+                    serialisation = new HistoriqueConsultationsClientAvecDispoSerialisation();
+                }
+                break;
+                /**
+                 * utilisé pour afficher l'historique des consultations d'un du
+                 * client relié à l'employé authentifié renvoie l'historique des
+                 * consultations du client sans les dispo des médiums associés
+                 */
+                case "recuperer-historique-consultations-fiche-client": {
+                    action = new RecupererHistoriqueConsultationsClientAction();
+                    serialisation = new HistoriqueConsultationsClientSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour l'initalisation de la page d'accueil employé
+                 * authentifié renvoie la consultation reliée à ce medium avec
+                 * son statut si une consultation est associée au médium,
+                 * renvoie toutes les infos du client (dont profil astral) sauf
+                 * son mot de passe L'historique client n'est pas renvoyé
+                 */
+                case "initialiser-accueil-employe": {
+                    action = new InitialiserAccueilEmployeAction();
+                    serialisation = new InitialisationAccueilEmployeSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour récupérer et afficher des prédictions Renvoie
+                 * les trois prédictions (amour, santé, travail)
+                 */
+                case "demander-predictions": {
+                    action = new DemanderPredictionsAction();
+                    serialisation = new ListePredictionsSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour commencer la consultation de l'employé
+                 * authentifié et changer le bouton en "terminer la
+                 * conusltation" renvoie vraie si la consultation a bien été
+                 * démarrée, faux sinon
+                 */
+                case "commencer-consultation": {
+                    action = new CommencerConsultationAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour terminer une consultation avec saisie
+                 * facultative de commentaire et ne plus afficher la
+                 * consultation si elle s'est bien terminée renvoie vraie si la
+                 * consultation a bien été terminée, faux sinon
+                 */
+                case "terminer-consultation": {
+                    action = new TerminerConsultationAction();
+                    serialisation = new RetourSuccesErreurSerialisation();
+                }
+                break;
+
+                /**
+                 * utilisé pour l'initalisation de la page des statistiques d'un
+                 * employé authentifié renvoie le nombre de consultations, le
+                 * nombre de clients et le pourcentage de la clientèle totale de
+                 * l'employé
+                 */
+                case "recuperer-statistiques": {
+                    action = new RecupererStatistiquesEmployeAction();
+                    serialisation = new StatistiquesEmployeSerialisation();
+                }
+                break;
+                /**
+                 * utilisé pour l'initalisation de la page des statistiques d'un
+                 * employé authentifié renvoie le nombre de consultations, le
+                 * nombre de clients et le pourcentage de la clientèle totale de
+                 * l'employé
+                 */
+                case "recuperer-classement-medium": {
+                    action = new RecupererClassementMedium();
+                    serialisation = new ClassementMediumSerialisation();
+                }
+                break;
+                default:
+                    break;
+            }
+
+            if (action != null && serialisation != null) {
+                action.executer(request);
+                serialisation.serialiser(request, response);
+            }
+        } catch (Exception e) {
+            response.sendError(400, "Une erreur est survenue.");
         }
     }
 
