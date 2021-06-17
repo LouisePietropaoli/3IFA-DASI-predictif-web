@@ -45,7 +45,12 @@ public class CreerCompteClientAction extends Action {
 
         if (clientRetour == null) {
             request.setAttribute("erreur", true);
-        } 
+        }
+        else
+        {
+            request.setAttribute("erreur", false);
+        }
+        System.out.println(request.getAttribute("erreur"));
     }
 
 }
