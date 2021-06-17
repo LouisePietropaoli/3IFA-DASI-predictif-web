@@ -108,3 +108,12 @@ function reserverMedium(idMedium) {
                 $(`#medium-${idMedium}`).html("Réserver");
             });
 }
+
+    
+ function afficherDetails(){
+    var element = $('#modalDetails').addClass("is-active");
+}
+
+function cacheModale2(){
+    var element = $('#modalDetails').removeClass("is-active");
+}

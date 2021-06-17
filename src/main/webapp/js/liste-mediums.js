@@ -1,24 +1,21 @@
 $(document).ready(function () {
-    afficherListeMediums();
-    $('.icone-loupe').on('click', function () {
-        $.ajax({
-            url: './ActionServlet',
-            type: 'POST',
-            data: {
-                todo: ''
-            },
-            dataType: 'json'
-        })
-                .done(function (response) {
-                    if (!response.erreur) {
-
-                    } else {
-                    }
-                })
-                .fail(function (error) {
-                })
-                .always(function () {
-                });
+    $.ajax({
+        url: './ActionServlet',
+        type: 'POST',
+        data: {
+            todo: 'lister-mediums'
+        },
+        dataType: 'json'
+    })
+    .done(function (response) {
+        if (!response.erreur) {
+            $("#liste-mediums").html(afficherListeMediums(response.mediums));
+        } else {
+        }
+    })
+    .fail(function (error) {
+    })
+    .always(function () {
     });
     
     $('#bouton-deconnexion').on('click', function () {
@@ -41,7 +38,7 @@ $(document).ready(function () {
     });
 });
 
-function afficherListeMediums() {
+/*function afficherListeMediums() {
     $.ajax({
         url: './ActionServlet',
         type: 'POST',
@@ -80,4 +77,4 @@ function afficherListeMediums() {
             .always(function () {
             });
 
-}
+}*/

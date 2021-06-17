@@ -18,11 +18,4 @@ $(document).ready(function () {
     .always(function () {
     });
 });
-    
- function afficherDetails(){
-    var element = $('#modalDetails').addClass("is-active");
-}
 
-function cacheModale2(){
-    var element = $('#modalDetails').removeClass("is-active");
-}
