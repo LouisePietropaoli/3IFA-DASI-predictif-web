@@ -75,10 +75,11 @@ public class ActionServlet extends HttpServlet {
          */
         if (!TO_DO_SANS_AUTHENTIFICATION.contains(todo)) {
             //authentification nécessaire
-            // Verification de la session
+            // Vérification de la session
             Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
             if (userAuthentified == null) {
-                response.sendError(403, "Accès interdit : Aucun utilisateur authentifié.");
+                response.sendError(403, "Accès interdit.");
+                return;
             }
         }
 
@@ -119,17 +120,18 @@ public class ActionServlet extends HttpServlet {
                 serialisation = new RetourSuccesErreurSerialisation();
             }
             break;
-            case "deconnecter": {
-                action = new DeconnecterAction();
-                serialisation = new RetourSuccesErreurSerialisation();
-            }
-            break;
 
             /**
              * ********************************************************************
              * ACTIONS AVEC AUTHENTIFICATION
              * ********************************************************************
+             *
              */
+            case "deconnecter": {
+                action = new DeconnecterAction();
+                serialisation = new RetourSuccesErreurSerialisation();
+            }
+            break;
             /**
              * utilisé pour l'initalisation de la page d'accueil client
              * authentifié renvoie la liste de médiums avec dispo et le profil
