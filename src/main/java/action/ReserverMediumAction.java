@@ -26,6 +26,8 @@ public class ReserverMediumAction extends Action {
         if (medium != null) {
             try {
                 Consultation consultation = service.reserverMediumParClient(client, medium);
+                request.setAttribute("employeResa", consultation.getEmploye());
+
             } catch (AucunEmployeDisponibleException e) {
                 request.setAttribute("erreur", true);
             }

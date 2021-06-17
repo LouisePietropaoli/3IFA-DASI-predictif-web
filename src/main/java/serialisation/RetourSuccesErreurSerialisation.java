@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import metier.data.Employe;
+import metier.enums.Genre;
 
 public class RetourSuccesErreurSerialisation extends Serialisation {
 
@@ -15,6 +16,14 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JsonObject container = new JsonObject();
         container.addProperty("erreur", (Boolean) request.getAttribute("erreur"));
+
+        Employe employeResa = (Employe) request.getAttribute("employeResa");
+        if (employeResa != null) {
+            JsonObject jsonEmployeResa = new JsonObject();
+            jsonEmployeResa.addProperty("id", employeResa.getId());
+            jsonEmployeResa.addProperty("genre", employeResa.getGenre() == Genre.F ? "Femme" : "Homme");
+            container.add("employeResa", jsonEmployeResa);
+        }
 
         PrintWriter out = this.getWriter(response);
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
