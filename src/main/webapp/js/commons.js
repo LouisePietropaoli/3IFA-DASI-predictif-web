@@ -87,7 +87,7 @@ function reserverMedium(idMedium) {
         type: 'POST',
         data: {
             todo: 'reserver-medium',
-            idMedium: 26
+            idMedium: idMedium
         },
         dataType: 'json'
     })
