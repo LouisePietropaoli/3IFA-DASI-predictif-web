@@ -119,7 +119,7 @@ public class ActionServlet extends HttpServlet {
                      * authentifié renvoie la liste de médiums avec dispo et le
                      * profil astral du client authentifié
                      */
-                    case "initialser-accueil-client": {
+                    case "initialiser-accueil-client": {
                         action = new InitialiserAccueilClientAction();
                         serialisation = new InitialisationAccueilClientSerialisation();
                     }

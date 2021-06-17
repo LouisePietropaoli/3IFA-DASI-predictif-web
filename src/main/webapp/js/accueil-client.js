@@ -3,7 +3,7 @@ $(document).ready(function () {
         url: './ActionServlet',
         type: 'POST',
         data: {
-            todo: 'initialser-accueil-client'
+            todo: 'initialiser-accueil-client'
         },
         dataType: 'json'
     })
