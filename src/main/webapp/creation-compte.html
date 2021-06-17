@@ -23,9 +23,9 @@
                 </div>                
             </div>
         </div>
-        
+
         <div class="contenuFormulaire">
-                <div class='box has-text-centered'>
+            <div class='box has-text-centered'>
                 <p class="title is-3">Création de compte</p>
 
                 <div id='identite' class='categorie'>
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="separateur"></div>
-                
+
                 <div id='compte' class='categorie'>
                     <p class="title is-5">Compte</p>
                     <table style="width: 20em; text-align: left">
@@ -78,40 +78,32 @@
                     </table>
                 </div>
 
-                
+
                 <div class="has-text-centered">
                     <button class="button" onClick='validerFormulaire()' style="margin-top: 1em">
-                        <a href="creation-compte.html">
-                            Créer mon compte
-                        </a>
+                        Créer mon compte
                     </button>
                 </div>
             </div>
         </div>
-        
- <!--
-          <div class="content" id="succes">
-            <p class="title is-4">
-              <strong>La création de votre compte a réussi.</strong> 
-            </p>
-            <p class="title is-4">
-              <br>
-              <strong>Un email de confirmation vous a été envoyé.</strong> 
-            </p>
-            <button class="button"><a href='./connexion.html'><strong>Se connecter</strong></a></button>
-          </div>
-
-            <div class="content" id="echec">
-            <p class="title is-4">
-              <strong>La création de votre compte a échoué.</strong> 
-            </p>
-            <button class="button"><a href='./index.html'><strong>Retour à la page d'accueil</strong></a></button>
-          </div>
- -->
-
     </body>
 </html>
-    
+
+<div id="modalCreationCompte" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Création de compte</p>
+            <button onClick="cacheModaleCreationCompte()" class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div id="modal-creation-compte">
+                <div id="modal-creation-compte-content"></div>
+            </div>
+        </section>
+    </div>
+</div>
+
 <style>
     input:invalid {
         color: red;
@@ -122,4 +114,3 @@
     }
 </style>
 
- 
