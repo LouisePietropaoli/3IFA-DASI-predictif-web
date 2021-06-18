@@ -10,7 +10,6 @@ $(document).ready(function () {
     })
             .done(function (response) {
                 if (!response.erreur) {
-                    console.log(response);
                     var cList = $('#historique');
                     if (response.historiqueConsultation.length == 0) {
                         var li = $('<li/>')
@@ -57,7 +56,6 @@ $(document).ready(function () {
         dataType: 'json'
     })
             .done(function (response) {
-                console.log(response);
                 var consultationEnCours = response.consultationEnCours;
                 if (consultationEnCours) {
                     var statutConsultation = response.statut;
