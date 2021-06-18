@@ -7,7 +7,7 @@ $(document).ready(function () {
     } else {
         $("#lien-portail-client").hide();
     }
-                todo: 'connecter'
+    
     $('#bouton-connexion').on('click', function () {
         $.ajax({
             url: './ActionServlet',
