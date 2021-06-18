@@ -10,7 +10,7 @@ $(document).ready(function () {
             .done(function (response) {
                 document.getElementById('nbConsultations').textContent += response.nbConsultationsEmploye;
                 document.getElementById('nbClient').textContent += response.nbClientEmploye;
-                document.getElementById('pourcentageClient').textContent += response.pourcentageClientEmploye;
+                document.getElementById('pourcentageClient').textContent += response.pourcentageClientEmploye + " %";
             }
             )
             .fail(function () { // Appel KO => erreur technique à gérer
