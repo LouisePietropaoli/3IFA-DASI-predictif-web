@@ -15,7 +15,6 @@ function voirDetailsMedium(idMedium) {
     })
             .done(function (response) {
                 if (!response.erreur) {
-                    console.log(response);
                     $('#modal-details-medium-content').html(detailsMediumsHtml(response.medium));
                 } else {
                 }
@@ -44,7 +43,6 @@ function detailsMediumsHtml(medium) {
 function afficherListeMediums(mediums, afficheReserver = false) {
     const htmlMediumsListe = mediums.reduce(
             (accumulateur, valeurCourante) => {
-        console.log(valeurCourante);
         accumulateur += `<div class='box'><li class="carte-medium"><div style="display: flex; align-items: center">`;
         if (valeurCourante.genre === 'Femme') {
             accumulateur += `<img class='image is-16x16' src='./img/f.png' />`;
@@ -92,8 +90,6 @@ function reserverMedium(idMedium) {
         dataType: 'json'
     })
             .done(function (response) {
-                console.log(response);
-
                 if (!response.erreur) {
                     $('#modal-reservation-content').html(MESSAGE_SUCCES);
                 } else {
@@ -135,4 +131,26 @@ function deconnecter() {
             })
             .always(function () { // facultatif: appelé après le .done() ou le .fail()
             });
+}
+
+function declencherListerMediums(avecDispo = false) {
+    $.ajax({
+        url: './ActionServlet',
+        type: 'POST',
+        data: {
+            todo: 'lister-mediums',
+            avecDispo: avecDispo
+        },
+        dataType: 'json'
+    })
+    .done(function (response) {
+        if (!response.erreur) {
+            $("#liste-mediums").html(afficherListeMediums(response.mediums, avecDispo));
+        } else {
+        }
+    })
+    .fail(function (error) {
+    })
+    .always(function () {
+    });
 }

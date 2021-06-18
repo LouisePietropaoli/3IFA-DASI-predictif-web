@@ -9,7 +9,6 @@ $(document).ready(function () {
     })
             .done(function (response) {
                 if (!response.erreur) {
-                    console.log(response);
                     var cList = $('#historique');
                     if (response.historiqueConsultation.length == 0) {
                         $('#titre-historique').text('Votre historique est vide.');

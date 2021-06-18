@@ -1,5 +1,4 @@
 function validerFormulaire() {
-    console.log('test');
     if (!$('#nom').val())
     {
         alert("le champ nom est requis !");
@@ -47,8 +46,6 @@ pour réserver votre première consultation ! <br/>`;
         dataType: 'json'
     })
             .done(function (response) {
-                console.log(response);
-
                 if (!response.erreur) {
                     $('#modal-creation-compte-content').html(MESSAGE_SUCCES);
                 } else {
