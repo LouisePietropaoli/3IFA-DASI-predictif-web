@@ -78,7 +78,6 @@ public class ActionServlet extends HttpServlet {
                 Boolean userAuthentified = (Boolean) session.getAttribute("userAuthentified");
                 if (userAuthentified == null) {
                     response.sendError(403, "Accès interdit.");
-                    return;
                 }
             }
 
