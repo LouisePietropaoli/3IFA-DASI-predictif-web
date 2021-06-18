@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Medium;
 import util.Utility;
-import static util.Utility.recupererGenreMedium;
 
 /**
  * construit les détails sur un médium genre | designation | type | description

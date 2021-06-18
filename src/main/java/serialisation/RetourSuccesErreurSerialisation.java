@@ -26,6 +26,8 @@ public class RetourSuccesErreurSerialisation extends Serialisation {
             JsonObject jsonEmployeResa = new JsonObject();
             jsonEmployeResa.addProperty("id", employeResa.getId());
             jsonEmployeResa.addProperty("genre", employeResa.getGenre() == Genre.F ? "Femme" : "Homme");
+            jsonEmployeResa.addProperty("nom", employeResa.getNom());
+            jsonEmployeResa.addProperty("prenom", employeResa.getPrenom());
             container.add("employeResa", jsonEmployeResa);
         }
 

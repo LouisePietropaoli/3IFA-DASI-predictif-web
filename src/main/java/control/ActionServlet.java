@@ -6,7 +6,6 @@ import action.CommencerConsultationAction;
 import action.CreerCompteClientAction;
 import action.DeconnecterAction;
 import action.DemanderPredictionsAction;
-import action.InitialiserAccueilClientAction;
 import action.InitialiserAccueilEmployeAction;
 import action.ListerMediumsAction;
 import action.RecupererClassementMedium;
@@ -14,13 +13,12 @@ import action.RecupererDetailsMediumAction;
 import action.RecupererDetailsProfilClientAction;
 import action.RecupererHistoriqueConsultationsClientAction;
 import action.RecupererHistoriqueConsultationsClientAvecDispoAction;
+import action.RecupererProfilAstral;
 import action.RecupererStatistiquesEmployeAction;
 import action.ReserverMediumAction;
 import action.TerminerConsultationAction;
 import dao.JpaUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -34,10 +32,10 @@ import serialisation.DetailsProfilClientSeralisation;
 import serialisation.DetailsProfilMediumSeralisation;
 import serialisation.HistoriqueConsultationsClientAvecDispoSerialisation;
 import serialisation.HistoriqueConsultationsClientSerialisation;
-import serialisation.InitialisationAccueilClientSerialisation;
 import serialisation.InitialisationAccueilEmployeSerialisation;
 import serialisation.ListeMediumsSerialisation;
 import serialisation.ListePredictionsSerialisation;
+import serialisation.ProfilAstralSerialisation;
 import serialisation.RetourSuccesErreurSerialisation;
 import serialisation.Serialisation;
 import serialisation.StatistiquesEmployeSerialisation;
@@ -90,16 +88,28 @@ public class ActionServlet extends HttpServlet {
                  * ACTIONS SANS AUTHENTIFICATION
                  * ********************************************************************
                  */
+                /**
+                 * @param avecDispo: boolean. Vrai si l'on doit récupérer la 
+                 * disponibilité de chaque médium.
+                 */
                 case "lister-mediums": {
                     action = new ListerMediumsAction();
                     serialisation = new ListeMediumsSerialisation();
                 }
                 break;
+                /**
+                 * @param email
+                 * @param motDePasse
+                 * @param mode 'client' | 'employe'
+                 */
                 case "connecter": {
                     action = new AuthentifierAction();
                     serialisation = new RetourSuccesErreurSerialisation();
                 }
                 break;
+                /**
+                 * @param mediumId
+                 */
                 case "recuperer-details-medium": {
                     /**
                      * utilisé pour afficher les détails d'un médiums et sa
@@ -110,6 +120,25 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new DetailsProfilMediumSeralisation();
                 }
                 break;
+                case "recuperer-profil-astral": {
+                    /**
+                     * utilisé pour afficher le profil astral du client connecté.
+                     */
+                    action = new RecupererProfilAstral();
+                    serialisation = new ProfilAstralSerialisation();
+                }
+                break;
+                /**
+                 * @param nom
+                 * @param prenom
+                 * @param date_naissance
+                 * @param adresse
+                 * @param ville
+                 * @param code_postal
+                 * @param adresse_mail
+                 * @param telephone
+                 * @param mdp
+                 */
                 case "creer-compte-client": {
                     /**
                      * utilisé pour la création d'un compte client pour ensuite
@@ -134,21 +163,11 @@ public class ActionServlet extends HttpServlet {
                 }
                 break;
                 /**
-                 * utilisé pour l'initalisation de la page d'accueil client
-                 * authentifié renvoie la liste de médiums avec dispo et le
-                 * profil astral du client authentifié
-                 */
-                case "initialiser-accueil-client": {
-                    action = new InitialiserAccueilClientAction();
-                    serialisation = new InitialisationAccueilClientSerialisation();
-                }
-                break;
-
-                /**
                  * utilisé pour réserver un médium sur la page de listing des
                  * mediums avec dispo et pour afficher la modale de confirmation
                  * ou d'erreur de création de la consultation renvoie un
                  * attribut erreur à vrai si la consutlation n'a pas été créée
+                 * @param idMedium
                  */
                 case "reserver-medium": {
                     action = new ReserverMediumAction();
@@ -182,6 +201,7 @@ public class ActionServlet extends HttpServlet {
                  * utilisé pour afficher l'historique des consultations d'un du
                  * client relié à l'employé authentifié renvoie l'historique des
                  * consultations du client sans les dispo des médiums associés
+                 * et avec les éventuels commantaires sur la consultation
                  */
                 case "recuperer-historique-consultations-fiche-client": {
                     action = new RecupererHistoriqueConsultationsClientAction();
@@ -201,17 +221,18 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new InitialisationAccueilEmployeSerialisation();
                 }
                 break;
-
                 /**
                  * utilisé pour récupérer et afficher des prédictions Renvoie
                  * les trois prédictions (amour, santé, travail)
+                 * @param amour 1 | 2 | 3 | 4
+                 * @param sante 1 | 2 | 3 | 4
+                 * @param travail 1 | 2 | 3 | 4
                  */
                 case "demander-predictions": {
                     action = new DemanderPredictionsAction();
                     serialisation = new ListePredictionsSerialisation();
                 }
                 break;
-
                 /**
                  * utilisé pour commencer la consultation de l'employé
                  * authentifié et changer le bouton en "terminer la
@@ -223,19 +244,19 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new RetourSuccesErreurSerialisation();
                 }
                 break;
-
                 /**
                  * utilisé pour terminer une consultation avec saisie
                  * facultative de commentaire et ne plus afficher la
                  * consultation si elle s'est bien terminée renvoie vraie si la
                  * consultation a bien été terminée, faux sinon
+                 * @param commentaire Commentaire mis par l'employé sur la 
+                 * consultation.
                  */
                 case "terminer-consultation": {
                     action = new TerminerConsultationAction();
                     serialisation = new RetourSuccesErreurSerialisation();
                 }
                 break;
-
                 /**
                  * utilisé pour l'initalisation de la page des statistiques d'un
                  * employé authentifié renvoie le nombre de consultations, le
@@ -267,7 +288,7 @@ public class ActionServlet extends HttpServlet {
                 serialisation.serialiser(request, response);
             }
         } catch (Exception e) {
-            response.sendError(400, "Une erreur est survenue.");
+            response.sendError(400, "Une erreur est survenue : " + e);
         }
     }
 

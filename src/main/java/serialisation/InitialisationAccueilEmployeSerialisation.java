@@ -2,7 +2,6 @@ package serialisation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import metier.data.Client;
 import metier.data.Consultation;
-import metier.data.Employe;
 import metier.data.Medium;
 import metier.enums.Statut;
 import util.Utility;

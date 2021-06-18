@@ -30,7 +30,6 @@ $(document).ready(function () {
                 }
             })
             .fail(function (response) { // Appel KO => erreur technique à gérer
-                console.log("Fail in ajax")
             })
             .always(function (response) { // facultatif: appelé après le .done() ou le .fail()
             });

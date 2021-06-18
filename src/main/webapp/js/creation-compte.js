@@ -46,8 +46,6 @@ pour réserver votre première consultation ! <br/>`;
         dataType: 'json'
     })
             .done(function (response) {
-                console.log(response);
-
                 if (!response.erreur) {
                     $('#modal-creation-compte-content').html(MESSAGE_SUCCES);
                 } else {
