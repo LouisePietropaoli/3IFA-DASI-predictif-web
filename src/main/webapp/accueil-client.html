@@ -27,21 +27,30 @@
         </div>
 
         <div class="contenu">
-            <div class='box'>
-                <p class="title is-3">Accueil</p>
-            </div>
 
-            <div id="lprofil-astral" style="margin-bottom:2em;">
-                <p class="title is-5 texte">Votre profil astral</p>
-                <p id="signe_zodiaque" class="texte">Votre signe du zodiaque : </p>
-                <p id="signe_chinois" class="texte">Votre signe astrologique chinois : </p>
-                <p id="couleur_porte_bonheur" class="texte">Votre couleur porte-bonheur : </p>
-                <p id="animal_totem" class="texte">Votre animal totem : </p>
-            </div>
+            
+            <div style="display: flex">
+                <div style="margin-bottom:2em; flex-grow: 2" >
+                    <div class='box'>
+                        <p class="title is-2">Liste des médiums</p>
+                    </div>
 
-            <div>
-                <ul id="liste-mediums"></ul>
-            </div>
+                    <ul id="liste-mediums"></ul>
+                </div>
+                
+                <div id="lprofil-astral" style="margin-left:2em; flex-grow: 1; text-align: center" class="box">
+                    <p class="title is-2 texte">Votre profil astral</p>
+                    <p class="texte" style="font-size: 1.3em">Votre signe du zodiaque</p>
+                    <p id="signe_zodiaque" class="texte" style="font-weight: bold; font-size: 1.8em"></p>
+                    <img id="img-signe" class="image is-36x36" src="" style="margin-bottom: 1em; margin-left: auto; margin-right: auto" />
+                    <p class="texte" style="font-size: 1.3em">Votre signe astrologique chinois</p>
+                    <p id="signe_chinois" class="texte" style="margin-bottom: 1em; font-weight: bold; font-size: 1.8em"></p>
+                    <p class="texte" style="font-size: 1.3em">Votre couleur porte-bonheur</p>
+                    <p id="couleur_porte_bonheur" class="texte" style="margin-bottom: 1em; font-weight: bold; font-size: 1.8em"></p>
+                    <p class="texte" style="font-size: 1.3em">Votre animal totem</p>
+                    <p id="animal_totem" class="texte" style="margin-bottom: 1em; font-weight: bold; font-size: 1.8em"></p>
+                </div>
+           </div>
         </div>
     </body>
 </html>

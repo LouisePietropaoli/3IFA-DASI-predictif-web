@@ -21,7 +21,7 @@ public class CreerCompteClientAction extends Action {
     public void executer(HttpServletRequest request) {        
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
-        String pattern = "MM-dd-yyyy";
+        String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Date date_naissance = new Date();
         try {

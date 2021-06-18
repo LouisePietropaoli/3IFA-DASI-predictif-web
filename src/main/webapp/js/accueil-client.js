@@ -39,6 +39,7 @@ function cacheModale3() {
 
 function afficheProfilAstral(client) {
     document.getElementById('signe_zodiaque').textContent += client.signeZodiaque;
+    document.getElementById('img-signe').src = "./img/signes/" + client.signeZodiaque+".png";
     document.getElementById('signe_chinois').textContent += client.signeAstro;
     document.getElementById('couleur_porte_bonheur').textContent += client.couleur;
     document.getElementById('animal_totem').textContent += client.animalTotem;
