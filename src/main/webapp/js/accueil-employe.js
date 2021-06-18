@@ -11,10 +11,8 @@ $(document).ready(function () {
             .done(function (response) {
                 if (!response.erreur) {
                     var cList = $('#historique');
-                    if (response.historiqueConsultation.length == 0) {
-                        var li = $('<li/>')
-                                .appendTo(cList);
-                        var aaa = $('<div/>').text("L'historique est vide");
+                    if (response.historiqueConsultation.length === 0) {
+                        $('#titre-historique').text(`L'historique des consultations est vide.`);
                     }
                     $.each(response.historiqueConsultation, function (i)
                     {
@@ -118,7 +116,8 @@ $(document).ready(function () {
                             "class": "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
-                        }).appendTo(document.getElementById('medium-2-div'));                    }
+                        }).appendTo(document.getElementById('medium-2-div'));
+                    }
                 } else {
                     document.getElementById('aucune_consultation').style.display = 'block';
                     document.getElementById('demande_consultation').style.display = 'none';
