@@ -28,7 +28,7 @@ public class DetailsProfilClientSeralisation extends Serialisation {
             jsonClient.addProperty("nom", client.getNom());
             jsonClient.addProperty("prenom", client.getPrenom());
             Date dateNaissance = client.getDateNaissance();
-            jsonClient.addProperty("date_naissance", dateNaissance.getDate()+"/"+dateNaissance.getMonth()+"/"+dateNaissance.getYear());
+            jsonClient.addProperty("date_naissance", dateNaissance.getDate()+"/"+(dateNaissance.getMonth()+1)+"/"+dateNaissance.getYear());
             jsonClient.addProperty("adresse", client.getAdresse());
             jsonClient.addProperty("ville", client.getVille());
             jsonClient.addProperty("code_postal", client.getCodePostal());
