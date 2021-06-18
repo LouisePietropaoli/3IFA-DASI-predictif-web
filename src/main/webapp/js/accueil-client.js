@@ -3,14 +3,13 @@ $(document).ready(function () {
         url: './ActionServlet',
         type: 'POST',
         data: {
-            todo: 'initialiser-accueil-client'
+            todo: 'recuperer-profil-astral'
         },
         dataType: 'json'
     })
             .done(function (response) {
                 if (!response.erreur) {
-                    $("#liste-mediums").html(afficherListeMediums(response.mediums, true));
-                    afficheProfilAstral(response.client);
+                    afficheProfilAstral(response);
                 } else {
                 }
             })
@@ -18,6 +17,27 @@ $(document).ready(function () {
             })
             .always(function () {
             });
+
+    $.ajax({
+        url: './ActionServlet',
+        type: 'POST',
+        data: {
+            todo: 'lister-mediums',
+            avecDispo: true
+        },
+        dataType: 'json'
+    })
+            .done(function (response) {
+                if (!response.erreur) {
+                    $("#liste-mediums").html(afficherListeMediums(response.mediums, true));
+                } else {
+                }
+            })
+            .fail(function (error) {
+            })
+            .always(function () {
+            });
+
     $('#bouton-deconnexion').on('click', () => deconnecter());
 });
 

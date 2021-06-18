@@ -17,6 +17,7 @@
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/InitialiserAccueilEmployeAction.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/ClassementMediumSerialisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/DeconnecterAction.java
+/home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/ProfilAstralSerialisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/StatistiquesEmployeSerialisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/ReserverMediumAction.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/Action.java
@@ -31,6 +32,7 @@
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/RecupererDetailsMediumAction.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/DemanderPredictionsAction.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/RecupererClassementMedium.java
+/home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/RecupererProfilAstral.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/ClientSerialisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/serialisation/DetailsProfilClientSeralisation.java
 /home/lpietropao/etu/s2/DASI/projet/3IFA-DASI-predictif-web/src/main/java/action/CommencerConsultationAction.java

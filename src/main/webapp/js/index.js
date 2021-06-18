@@ -3,19 +3,20 @@ $(document).ready(function () {
         url: './ActionServlet',
         type: 'POST',
         data: {
-            todo: 'lister-mediums'
+            todo: 'lister-mediums',
+            avecDispo: false
         },
         dataType: 'json'
     })
-    .done(function (response) {
-        if (!response.erreur) {
-            $("#liste-mediums").html(afficherListeMediums(response.mediums));
-        } else {
-        }
-    })
-    .fail(function (error) {
-    })
-    .always(function () {
-    });
+            .done(function (response) {
+                if (!response.erreur) {
+                    $("#liste-mediums").html(afficherListeMediums(response.mediums));
+                } else {
+                }
+            })
+            .fail(function (error) {
+            })
+            .always(function () {
+            });
 });
 

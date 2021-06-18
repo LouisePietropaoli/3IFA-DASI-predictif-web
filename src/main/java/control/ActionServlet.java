@@ -14,6 +14,7 @@ import action.RecupererDetailsMediumAction;
 import action.RecupererDetailsProfilClientAction;
 import action.RecupererHistoriqueConsultationsClientAction;
 import action.RecupererHistoriqueConsultationsClientAvecDispoAction;
+import action.RecupererProfilAstral;
 import action.RecupererStatistiquesEmployeAction;
 import action.ReserverMediumAction;
 import action.TerminerConsultationAction;
@@ -38,6 +39,7 @@ import serialisation.InitialisationAccueilClientSerialisation;
 import serialisation.InitialisationAccueilEmployeSerialisation;
 import serialisation.ListeMediumsSerialisation;
 import serialisation.ListePredictionsSerialisation;
+import serialisation.ProfilAstralSerialisation;
 import serialisation.RetourSuccesErreurSerialisation;
 import serialisation.Serialisation;
 import serialisation.StatistiquesEmployeSerialisation;
@@ -110,6 +112,14 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new DetailsProfilMediumSeralisation();
                 }
                 break;
+                case "recuperer-profil-astral": {
+                    /**
+                     * utilisé pour afficher le profil astral d'un client
+                     */
+                    action = new RecupererProfilAstral();
+                    serialisation = new ProfilAstralSerialisation();
+                }
+                break;
                 case "creer-compte-client": {
                     /**
                      * utilisé pour la création d'un compte client pour ensuite
@@ -133,17 +143,6 @@ public class ActionServlet extends HttpServlet {
                     serialisation = new RetourSuccesErreurSerialisation();
                 }
                 break;
-                /**
-                 * utilisé pour l'initalisation de la page d'accueil client
-                 * authentifié renvoie la liste de médiums avec dispo et le
-                 * profil astral du client authentifié
-                 */
-                case "initialiser-accueil-client": {
-                    action = new InitialiserAccueilClientAction();
-                    serialisation = new InitialisationAccueilClientSerialisation();
-                }
-                break;
-
                 /**
                  * utilisé pour réserver un médium sur la page de listing des
                  * mediums avec dispo et pour afficher la modale de confirmation
@@ -267,7 +266,7 @@ public class ActionServlet extends HttpServlet {
                 serialisation.serialiser(request, response);
             }
         } catch (Exception e) {
-            response.sendError(400, "Une erreur est survenue.");
+            response.sendError(400, "Une erreur est survenue : " + e);
         }
     }
 
