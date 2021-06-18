@@ -36,19 +36,19 @@ public class HistoriqueConsultationsClientAvecDispoSerialisation extends Seriali
                 jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut() != null ? 
                         consultation.getDateHeureDebut().getDate()+
                         "/"+ (consultation.getDateHeureDebut().getMonth()+ 1) +
-                        "/"+consultation.getDateHeureDebut().getYear() + 
+                        "/"+(consultation.getDateHeureDebut().getYear()+1900) + 
                         " " + consultation.getDateHeureDebut().getHours()+
                         "h" + consultation.getDateHeureDebut().getMinutes(): null);
                 jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin() != null ? 
                         consultation.getDateHeureFin().getDate()+
                         "/"+(consultation.getDateHeureFin().getMonth()+1) +
-                        "/"+consultation.getDateHeureFin().getYear() + 
+                        "/"+(consultation.getDateHeureFin().getYear()+1900) + 
                         " " + consultation.getDateHeureFin().getHours()+
                         "h" + consultation.getDateHeureFin().getMinutes(): null);
                 jsonConsultation.addProperty("dateDemande", consultation.getDateDemande() != null ? 
                         consultation.getDateDemande().getDate()+
                         "/"+(consultation.getDateDemande().getMonth()+1) +
-                        "/"+consultation.getDateDemande().getYear() + 
+                        "/"+(consultation.getDateDemande().getYear()+1900) + 
                         " " + consultation.getDateDemande().getHours()+
                         "h" + consultation.getDateDemande().getMinutes(): null);                jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
                 jsonConsultation.addProperty("dispo", dispos.get(consultation.getId()));

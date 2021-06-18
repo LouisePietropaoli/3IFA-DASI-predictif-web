@@ -24,7 +24,7 @@ $(document).ready(function () {
                         }).appendTo(li);
 
                         var p = $("<p/>", {
-                            "class": "texte",
+                            "class": "title is-3",
                             "style": "width: -moz-fit-content"
                         }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / "
                                 + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " "
