@@ -23,19 +23,38 @@ $(document).ready(function () {
                             "class": "box",
                         }).appendTo(li);
 
+
                         var p = $("<p/>", {
-                            "class": "title is-3",
-                            "style": "width: -moz-fit-content"
-                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / "
-                                + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " "
-                                + " " + response.historiqueConsultation[i].typeMedium + " Commentaire : " + response.historiqueConsultation[i].commentaire)
+                            "class": "title is-6",
+                            "style": "font-size: 1.3em"
+                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " - "
+                                + response.historiqueConsultation[i].heureFin)
                                 .appendTo(div);
+
+                        var div2 = $("<div/>", {
+                            "style": "display: flex; align-items: center; margin-left: 7em",
+                        }).appendTo(div);
+
+                        var p2 = $("<p/>", {
+                            "class": "texte",
+                            "style": "width: -moz-fit-content; font-size: 1.2em"
+                        }).text(" avec " + response.historiqueConsultation[i].nomMedium + " "
+                                + " " + response.historiqueConsultation[i].typeMedium)
+                                .appendTo(div2);
+
                         var img = $("<img/>", {
                             "onclick": "voirDetailsMedium(" + response.historiqueConsultation[i].idMedium + ");afficherDetails()",
                             "class": "image is-16x16",
                             "src": "./img/loupe.png",
                             "style": "margin-left: 1em"
-                        }).appendTo(div);
+                        }).appendTo(div2);
+
+                        var p3 = $("<p/>", {
+                            "class": "texte",
+                            "style": "width: -moz-fit-content; font-size: 1.2em; margin-left: 7em"
+                        }).text(" Commentaire : " + response.historiqueConsultation[i].commentaire)
+                                .appendTo(div);
+
                     });
                 } else {
                 }
