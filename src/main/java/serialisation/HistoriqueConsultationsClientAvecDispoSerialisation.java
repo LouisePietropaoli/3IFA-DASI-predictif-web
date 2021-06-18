@@ -32,11 +32,25 @@ public class HistoriqueConsultationsClientAvecDispoSerialisation extends Seriali
         if (historiqueConsultation != null && dispos != null) {
              for (Consultation consultation : historiqueConsultation) {
                 JsonObject jsonConsultation = new JsonObject();
-                jsonConsultation.addProperty("id", consultation.getId()); //TODO : Format hours
-                jsonConsultation.addProperty("dateDemande", consultation.getDateDemande().toString());
-                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut() != null ? consultation.getDateHeureDebut().toString() : null);
-                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin() != null ? consultation.getDateHeureFin().toString() : null);
-                jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
+                jsonConsultation.addProperty("id", consultation.getId()); 
+                jsonConsultation.addProperty("heureDebut", consultation.getDateHeureDebut() != null ? 
+                        consultation.getDateHeureDebut().getDate()+
+                        "/"+consultation.getDateHeureDebut().getMonth() +
+                        "/"+consultation.getDateHeureDebut().getYear() + 
+                        " " + consultation.getDateHeureDebut().getHours()+
+                        "h" + consultation.getDateHeureDebut().getMinutes(): null);
+                jsonConsultation.addProperty("heureFin", consultation.getDateHeureFin() != null ? 
+                        consultation.getDateHeureFin().getDate()+
+                        "/"+consultation.getDateHeureFin().getMonth() +
+                        "/"+consultation.getDateHeureFin().getYear() + 
+                        " " + consultation.getDateHeureFin().getHours()+
+                        "h" + consultation.getDateHeureFin().getMinutes(): null);
+                jsonConsultation.addProperty("dateDemande", consultation.getDateDemande() != null ? 
+                        consultation.getDateDemande().getDate()+
+                        "/"+consultation.getDateDemande().getMonth() +
+                        "/"+consultation.getDateDemande().getYear() + 
+                        " " + consultation.getDateDemande().getHours()+
+                        "h" + consultation.getDateDemande().getMinutes(): null);                jsonConsultation.addProperty("nomMedium", consultation.getMedium().getDesignation());
                 jsonConsultation.addProperty("dispo", dispos.get(consultation.getId()));
                 jsonConsultation.addProperty("typeMedium", recupererTypeMedium(consultation.getMedium()));
                 jsonConsultation.addProperty("idMedium", consultation.getMedium().getId());

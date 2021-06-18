@@ -1,5 +1,4 @@
 function validerFormulaire() {
-    console.log('test');
     if (!$('#nom').val())
     {
         alert("le champ nom est requis !");
