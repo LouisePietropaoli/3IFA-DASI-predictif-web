@@ -20,29 +20,39 @@ $(document).ready(function () {
 
                         var div = $("<div/>", {
                             "class": "box",
-                            "style": "display: flex; align-items: center",
                         }).appendTo(li);
 
                         var p = $("<p/>", {
-                            "class": "title is-5",
-                            "style": "width: -moz-fit-content"
-                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " / "
-                                + response.historiqueConsultation[i].heureFin + " avec " + response.historiqueConsultation[i].nomMedium + " "
-                                + " " + response.historiqueConsultation[i].typeMedium)
+                            "class": "title is-6",
+                            "style": "font-size: 1.3em"
+                        }).text("Le " + response.historiqueConsultation[i].dateDemande + " : " + response.historiqueConsultation[i].heureDebut + " - "
+                                + response.historiqueConsultation[i].heureFin)
                                 .appendTo(div);
+                        
+                        var div2 = $("<div/>", {
+                            "style": "display: flex; align-items: center; margin-left: 7em",
+                        }).appendTo(div);
+                        
+                        var p2 = $("<p/>", {
+                            "class": "texte",
+                            "style": "width: -moz-fit-content; font-size: 1.2em"
+                        }).text(" avec " + response.historiqueConsultation[i].nomMedium + " "
+                                + " " + response.historiqueConsultation[i].typeMedium)
+                                .appendTo(div2);
+                        
                         var img = $("<img/>", {
                             "onclick": "voirDetailsMedium(" + response.historiqueConsultation[i].idMedium + ");afficherDetails()",
                             "class": "image is-16x16",
                             "src": "./img/loupe.png",
-                            "style": "margin-left: 1.5em"
-                        }).appendTo(div);
+                            "style": "margin-left: 1em"
+                        }).appendTo(div2);
 
                         var button = $("<button/>", {
                             "class": "button",
-                            "style": "margin-left: 1.5em",
+                            "style": "margin-left: 1em",
                             "onclick": "declencherReserverMedium(" + response.historiqueConsultation[i].dispo + ", " + response.historiqueConsultation[i].idMedium + ")"
                         }).prop("disabled", !response.historiqueConsultation[i].dispo)
-                                .appendTo(div);
+                                .appendTo(div2);
 
                         var span = $("<span/>", {}).text("Réserver").appendTo(button);
                     });
