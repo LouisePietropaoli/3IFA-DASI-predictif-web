@@ -1,4 +1,3 @@
-serialisation/InitialisationAccueilClientSerialisation.class
 serialisation/ConnexionSerialisation.class
 action/RecupererDetailsProfilClientAvecProfilAstralAction.class
 action/DemanderPredictionsAction.class
@@ -10,7 +9,6 @@ serialisation/HistoriqueConsultationsClientAvecDispoSerialisation.class
 action/RecupererHistoriqueConsultationsClientAvecDispoAction.class
 serialisation/ClassementMediumSerialisation.class
 serialisation/ProfilAstralSerialisation.class
-action/AuthentifierClientAction.class
 serialisation/ConsultationSerialisation.class
 action/RecupererHistoriqueConsultationsClientAction.class
 util/Utility.class
@@ -34,5 +32,4 @@ serialisation/ListePredictionsSerialisation.class
 action/RecupererProfilAstral.class
 action/RecupererStatistiquesEmployeAction.class
 action/InitialiserAccueilEmployeAction.class
-action/InitialiserAccueilClientAction.class
 serialisation/HistoriqueConsultationsClientSerialisation.class

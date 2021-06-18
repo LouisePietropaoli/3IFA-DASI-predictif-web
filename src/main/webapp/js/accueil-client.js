@@ -18,25 +18,7 @@ $(document).ready(function () {
             .always(function () {
             });
 
-    $.ajax({
-        url: './ActionServlet',
-        type: 'POST',
-        data: {
-            todo: 'lister-mediums',
-            avecDispo: true
-        },
-        dataType: 'json'
-    })
-            .done(function (response) {
-                if (!response.erreur) {
-                    $("#liste-mediums").html(afficherListeMediums(response.mediums, true));
-                } else {
-                }
-            })
-            .fail(function (error) {
-            })
-            .always(function () {
-            });
+    declencherListerMediums(true);
 
     $('#bouton-deconnexion').on('click', () => deconnecter());
 });

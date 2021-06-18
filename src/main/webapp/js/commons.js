@@ -132,3 +132,25 @@ function deconnecter() {
             .always(function () { // facultatif: appelé après le .done() ou le .fail()
             });
 }
+
+function declencherListerMediums(avecDispo = false) {
+    $.ajax({
+        url: './ActionServlet',
+        type: 'POST',
+        data: {
+            todo: 'lister-mediums',
+            avecDispo: avecDispo
+        },
+        dataType: 'json'
+    })
+    .done(function (response) {
+        if (!response.erreur) {
+            $("#liste-mediums").html(afficherListeMediums(response.mediums, avecDispo));
+        } else {
+        }
+    })
+    .fail(function (error) {
+    })
+    .always(function () {
+    });
+}
