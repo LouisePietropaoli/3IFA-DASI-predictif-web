@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 serialisation/ConnexionSerialisation.class
 action/DemanderPredictionsAction.class
 action/Action.class
@@ -32,3 +33,39 @@ action/RecupererProfilAstral.class
 action/RecupererStatistiquesEmployeAction.class
 action/InitialiserAccueilEmployeAction.class
 serialisation/HistoriqueConsultationsClientSerialisation.class
+=======
+serialisation\HistoriqueConsultationsClientAvecDispoSerialisation.class
+serialisation\HistoriqueConsultationsClientSerialisation.class
+serialisation\Serialisation.class
+action\CommencerConsultationAction.class
+action\ReserverMediumAction.class
+action\DemanderPredictionsAction.class
+action\RecupererDetailsMediumAction.class
+serialisation\StatistiquesEmployeSerialisation.class
+action\DeconnecterAction.class
+serialisation\DetailsProfilMediumSeralisation.class
+action\AuthentifierAction.class
+serialisation\ListeMediumsSerialisation.class
+action\CreerCompteClientAction.class
+serialisation\ClassementMediumSerialisation.class
+serialisation\ProfilAstralSerialisation.class
+action\RecupererDetailsProfilClientAction.class
+serialisation\ConnexionSerialisation.class
+action\Action.class
+action\ListerMediumsAction.class
+serialisation\ListePredictionsSerialisation.class
+serialisation\ClientSerialisation.class
+action\RecupererClassementMedium.class
+action\RecupererStatistiquesEmployeAction.class
+action\TerminerConsultationAction.class
+serialisation\DetailsProfilClientSeralisation.class
+action\RecupererHistoriqueConsultationsClientAction.class
+util\Utility.class
+action\RecupererHistoriqueConsultationsClientAvecDispoAction.class
+serialisation\InitialisationAccueilEmployeSerialisation.class
+action\RecupererProfilAstral.class
+action\InitialiserAccueilEmployeAction.class
+control\ActionServlet.class
+serialisation\ConsultationSerialisation.class
+serialisation\RetourSuccesErreurSerialisation.class
+>>>>>>> Stashed changes
