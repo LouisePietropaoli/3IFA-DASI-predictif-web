@@ -102,8 +102,6 @@ $(document).ready(function () {
                     document.getElementById('animal_totem').textContent += response.client.animal_totem;
 
 
-
-
                     if (statutConsultation === "DEMANDEE") {
                         document.getElementById('aucune_consultation').style.display = 'none';
                         document.getElementById('demande_consultation').style.display = 'block';
@@ -142,6 +140,7 @@ $(document).ready(function () {
                     document.getElementById('demande_consultation').style.display = 'none';
                     document.getElementById('en_consultation').style.display = 'none';
                     document.getElementById('fiche_client').style.display = 'none';
+                    document.getElementById('predictions').style.display = 'none';
                     document.getElementById('demande_prediction').disabled = true;
                 }
             }
