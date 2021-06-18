@@ -1,5 +1,4 @@
 serialisation/ConnexionSerialisation.class
-action/RecupererDetailsProfilClientAvecProfilAstralAction.class
 action/DemanderPredictionsAction.class
 action/Action.class
 serialisation/DetailsProfilClientSeralisation.class

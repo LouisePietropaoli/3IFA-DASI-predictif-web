@@ -10,11 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import metier.data.Astrologue;
-import metier.data.Cartomancien;
 import metier.data.Medium;
-import metier.data.Spirite;
-import metier.enums.Genre;
 import util.Utility;
 
 /**

@@ -1,10 +1,8 @@
 package action;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import metier.data.Employe;
-import metier.data.Medium;
 import metier.service.Service;
 
 /**

@@ -2,18 +2,12 @@ package serialisation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import metier.data.Client;
-import metier.data.Medium;
-import util.Utility;
 
 public class ProfilAstralSerialisation extends Serialisation {
 
